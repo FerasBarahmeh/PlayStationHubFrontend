@@ -1,0 +1,23 @@
+// Import Bootstrap's core and functions
+@import "bootstrap/scss/functions";
+
+// Custom overrides
+$primary: #00B7AB;  // Replace CSS variables with actual hex colors
+$secondary: #C0F3F4;
+$body-bg: #151515;
+$body-color: #ffffff;
+$border-color: #C0F3F4;
+
+$btn-primary-bg: #00B7AB;
+$btn-primary-color: #ffffff;
+$btn-primary-hover-bg: #019588;
+
+$form-control-bg: #2A2A2A;
+$form-control-color: #ffffff;
+$form-control-border-color: #404040;
+$form-control-placeholder-color: #A3A3A3;
+
+
+@import "bootstrap/scss/variables";
+// Import the rest of Bootstrap's components
+@import "bootstrap/scss/bootstrap";

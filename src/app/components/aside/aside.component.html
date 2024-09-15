@@ -1,0 +1,40 @@
+<aside [ngClass]="isOpen ? 'opened': 'closed'">
+  <div class="switcher" (click)="isOpen = ! isOpen">
+    <fa-icon [icon]="iconDefinition.faAngleDoubleRight" [ngClass]="{'rotate-180' : isOpen} "></fa-icon>
+  </div>
+  <header class="d-flex header">PlayStation Hub</header>
+  <main>
+    <section class="search-container">
+      <div class="input-group mb-3">
+        <fa-icon [icon]="iconDefinition.faSearch" class="search-icon"></fa-icon>
+        <input #asideSearchInput type="text" class="form-control search-input" placeholder="Search">
+        <button class="btn shortcut-btn">Ctrl + K</button>
+      </div>
+    </section>
+    <section class="items">
+      <ul>
+        <li class="active">
+          <fa-icon [icon]="iconDefinition.faWindowRestore" class="fa-lg"></fa-icon>
+          <span class="item-name">Dashboard</span>
+        </li>
+        <li>
+          <fa-icon [icon]="iconDefinition.faUsers" class="fa-lg"></fa-icon>
+          <span class="item-name">Users</span>
+        </li>
+
+        <div class="separator-line my-2"></div>
+        <li>
+          <fa-icon [icon]="iconDefinition.faGears" class="fa-lg"></fa-icon>
+          <span class="item-name">settings</span>
+        </li>
+      </ul>
+    </section>
+    <section class="profile-link">
+      <div><img class="avatar" src="assets/images/avatars/1.png" alt="avatar1"></div>
+      <div class="info">
+        <div class="name">Feras barahmeh</div>
+        <div class="role">Admin</div>
+      </div>
+    </section>
+  </main>
+</aside>
