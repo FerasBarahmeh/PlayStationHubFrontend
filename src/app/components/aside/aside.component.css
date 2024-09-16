@@ -108,7 +108,7 @@ aside.opened .item-name{
   font-size: 13px;
   color: var(--text-muted);
 }
-.profile-link . info {
+.profile-link .info {
   display: none;
 }
 
@@ -165,7 +165,7 @@ aside.opened .item-name{
   .item-name {
     display: block;
   }
-  .profile-link . info {
+  .profile-link .info {
     display: flex;
   }
   .profile-link .name,

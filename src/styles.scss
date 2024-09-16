@@ -23,7 +23,7 @@
 
   --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.15);
   --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.2);
-  --shadow-primary-light: 0 2px 12px var(--color-primary-light) 0.15;
+  --shadow-primary-light:  var(--shadow-primary-light);
 }
 /*Start General*/
 body {
@@ -43,6 +43,9 @@ ul {
 }
 li {
   list-style: none;
+}
+.pointer {
+  cursor: pointer;
 }
 /*End General*/
 

@@ -1,0 +1,42 @@
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  gap: 15px;
+}
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 400px;
+  background-color: var(--card-border);
+  border-radius: 15px;
+  box-shadow: 1px 1px 4px var(--color-primary) Inset;
+
+}
+.layout {
+  height: 100%;
+}
+.layout img {
+  width: 100%;
+  height: 100%;
+}
+.main-content {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.content-header {
+  margin-bottom: 55px;
+
+}
+form {
+  width: 100%;
+}
+.btn-login {
+  min-width: 100px;
+}

@@ -1,0 +1,40 @@
+<section class="page">
+  <div class="content">
+    <div class="layout shadow-sm">
+      <img class="avatar" src="assets/images/app/auth/login.webp" alt="avatar1">
+    </div>
+    <div class="main-content">
+      <div class="content-header">
+        <h2>Login in to Exclusive</h2>
+        <span>Enter your derails below</span>
+      </div>
+
+      <form #LoginForm=ngForm>
+        <div class="input-group mb-3">
+          <input type="text" [(ngModel)]="loginFields.username" name="username" class="form-control" placeholder="Username" autofocus aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" [(ngModel)]="loginFields.password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <div class="form-check">
+            <input class="form-check-input pointer" type="checkbox" value="" id="remember-me-checkbox">
+            <label class="form-check-label text-capitalize pointer" for="remember-me-checkbox">
+              remember me
+            </label>
+          </div>
+
+          <div class="text-capitalize text-muted fs-6 pointer">
+            forget password ?
+          </div>
+        </div>
+
+        <div class="mt-5 w-100 d-flex flex-column gap-2" >
+          <button (click)="Login(LoginForm)" class="btn-login btn btn-primary me-auto">Login</button>
+          <span class="pointer"><strong>Don't have an account?</strong> Register</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

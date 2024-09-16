@@ -7,3 +7,6 @@ import { provideClientHydration } from '@angular/platform-browser';
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration()]
 };
+export  const apiConfig ={
+  URL : 'http://localhost:3001/api/'
+};
