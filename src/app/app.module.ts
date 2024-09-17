@@ -14,7 +14,8 @@ import {SharedModule} from "./shared/shared.module";
   ],
   exports: [
     FontAwesomeModule,
-    SharedModule
-  ]
+    SharedModule,
+  ],
+
 })
 export class AppModule { }
