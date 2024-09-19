@@ -1,2 +1,4 @@
-<p> admin dashboard works!</p>
+@if (welcomeMessage) {
+<div class="bg-success">{{welcomeMessage}}</div>
+}
 <button class="btn btn-danger" (click)="logout()">Logout</button>

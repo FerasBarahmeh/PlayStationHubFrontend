@@ -1,0 +1,12 @@
+@if (errorMessages.length > 0) {
+<ul>
+  @for (errorMessage of errorMessages; track $index) {
+
+  <li>
+     <error><strong>*</strong> {{ errorMessage }}</error>
+  </li>
+
+  }
+</ul>
+
+}

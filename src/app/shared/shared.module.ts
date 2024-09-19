@@ -1,17 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ErrorComponent} from "./error/error.component";
+import { ErrorsComponent } from './errors/errors.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ErrorsComponent
+  ],
   imports: [
     CommonModule,
     ErrorComponent
   ],
   exports: [
-    ErrorComponent
+    ErrorComponent,
+    ErrorsComponent
   ]
 })
 export class SharedModule { }

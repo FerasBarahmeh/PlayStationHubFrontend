@@ -1,0 +1,5 @@
+.invalid {
+    color: var(--bs-danger);
+    font-size: 13px;
+    margin: 5px 8px 0px 10px;
+}
