@@ -39,7 +39,7 @@
 
         <div class="input-group d-flex flex-column mb-3">
           <input
-            type="password"
+            type="{{ apparentPassword ? 'text' : 'password'}}"
             name="password"
             formControlName="password"
             class="form-control w-100"
@@ -47,6 +47,8 @@
             aria-label="Password"
             aria-describedby="basic-addon1"
           />
+
+          <span class="togglePasswordInput" (click)="apparentPassword = ! apparentPassword">{{ apparentPassword ? 'show':'hide' }}</span>
 
           @if(backendErrors && backendErrors['Username']) {
           <errors [listOfErrorMessages]="backendErrors['Username']" />

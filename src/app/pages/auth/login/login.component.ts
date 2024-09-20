@@ -1,13 +1,13 @@
-import { afterNextRender, afterRender, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AppModule } from '../../../app.module';
+import { ILoginResponse } from '../../../interfaces/auth/ILoginResponce';
+import { ILoginAbstractControl } from '../../../interfaces/dataTransfareObjects/abstract-controler/users/ILoginAbstractControl';
 import { ILogin } from '../../../interfaces/dataTransfareObjects/users/ILogin';
 import { AuthService } from '../../../services/auth/auth.service';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { hasSpace } from '../../../validators/HasSpaceValidator';
-import { ILoginAbstractControl } from '../../../interfaces/dataTransfareObjects/abstract-controler/users/ILoginAbstractControl';
-import { ILoginResponse } from '../../../interfaces/auth/ILoginResponce';
 import { SharedService } from '../../../services/shared.service';
-import { Router } from '@angular/router';
+import { hasSpace } from '../../../validators/HasSpaceValidator';
 
 @Component({
   selector: 'app-login',
@@ -32,6 +32,8 @@ export class LoginComponent implements OnInit{
 
   private _userInfo?: ILogin | null;
   
+  public apparentPassword: boolean = false;
+  
   constructor(private _AuthService: AuthService, private _sharedService: SharedService, private _router: Router) {}
 
   ngOnInit(): void {
@@ -40,7 +42,7 @@ export class LoginComponent implements OnInit{
       this.rememberMe = !!localStorage.getItem('rememberMe');
       this._userInfo = this.rememberMe ?  JSON.parse(localStorage.getItem('rememberMe') ?? '{}') : null;
     }
-    
+
     this.loginForm = new FormGroup<ILoginAbstractControl>(
       {
         username: new FormControl(this._userInfo?.username, [

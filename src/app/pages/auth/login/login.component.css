@@ -40,3 +40,16 @@ form {
 .btn-login {
   min-width: 100px;
 }
+
+.togglePasswordInput {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-transform: capitalize;
+  font-size: 14px;
+  color: var(--text-muted);
+  cursor: pointer;
+  z-index: 10px;
+  user-select: none;
+}
