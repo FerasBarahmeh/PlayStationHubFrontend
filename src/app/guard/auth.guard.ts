@@ -1,4 +1,4 @@
-import {  inject } from '@angular/core';
+import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../services/auth/auth.service';
 import { Observable, of } from 'rxjs';
@@ -14,6 +14,9 @@ export const AuthGuard: CanActivateFn = (route, state): Observable<boolean> => {
       if (!isAuthenticated) {
         router.navigate(['/auth/login']);
         return false;
+      }
+      if (isAuthenticated) {
+        router.navigate(['dashboard']);
       }
       return true;
     }),

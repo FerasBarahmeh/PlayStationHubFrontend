@@ -1,7 +1,7 @@
-import {Component, ElementRef, HostListener, ViewChild} from '@angular/core';
-import {NgClass, NgOptimizedImage} from "@angular/common";
-import {faAngleDoubleRight, faSearch, faWindowRestore, faUsers, faGears} from "@fortawesome/free-solid-svg-icons"
-import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { NgClass, NgOptimizedImage } from "@angular/common";
+import { faAngleDoubleRight, faSearch, faWindowRestore, faUsers, faGears } from "@fortawesome/free-solid-svg-icons"
+import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 @Component({
   selector: 'app-aside',
   standalone: true,

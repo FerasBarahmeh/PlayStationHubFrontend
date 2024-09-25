@@ -6,16 +6,14 @@ import { ErrorsComponent } from './errors/errors.component';
 
 
 @NgModule({
-  declarations: [
-    ErrorsComponent
-  ],
-  imports: [
-    CommonModule,
-    ErrorComponent
-  ],
-  exports: [
-    ErrorComponent,
-    ErrorsComponent
-  ]
+    imports: [
+        CommonModule,
+        ErrorComponent,
+        ErrorsComponent
+    ],
+    exports: [
+        ErrorComponent,
+        ErrorsComponent
+    ]
 })
 export class SharedModule { }

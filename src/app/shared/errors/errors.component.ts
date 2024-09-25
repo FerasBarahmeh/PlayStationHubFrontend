@@ -1,10 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
+import { ErrorComponent } from '../error/error.component';
 
 @Component({
-  selector: 'errors',
-  templateUrl: './errors.component.html',
-  styleUrls: ['./errors.component.css'],
+    selector: 'errors',
+    templateUrl: './errors.component.html',
+    styleUrls: ['./errors.component.css'],
+    standalone: true,
+    imports: [ErrorComponent],
 })
 export class ErrorsComponent {
   @Input() control: AbstractControl | null = null;
