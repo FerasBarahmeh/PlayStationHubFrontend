@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AsideComponent } from '../../../components/aside/aside.component';
+import { faUsers, faWindowRestore, faGears } from "@fortawesome/free-solid-svg-icons"
+import { FaIconComponent } from "@fortawesome/angular-fontawesome";
+import { ItemAsideComponent } from '../../../components/ItemAside/ItemAside.component';
 
 @Component({
   selector: 'app-AdminDashboard',
@@ -7,14 +10,19 @@ import { AsideComponent } from '../../../components/aside/aside.component';
   styleUrls: ['./AdminDashboard.component.css'],
   standalone: true,
   imports: [
-    AsideComponent
+    FaIconComponent,
+    AsideComponent,
+    ItemAsideComponent
   ]
 })
-export class AdminDashboardComponent implements OnInit {
+export class AdminDashboardComponent {
 
-  constructor() { }
+  public faUsers = faUsers;
 
-  ngOnInit() {
+  public iconDefinition: any = {
+    faWindowRestore,
+    faUsers,
+    faGears,
   }
 
 }

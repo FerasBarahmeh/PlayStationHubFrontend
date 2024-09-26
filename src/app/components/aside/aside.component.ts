@@ -2,6 +2,7 @@ import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { NgClass, NgOptimizedImage } from "@angular/common";
 import { faAngleDoubleRight, faSearch, faWindowRestore, faUsers, faGears } from "@fortawesome/free-solid-svg-icons"
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
+import { ItemAsideComponent } from '../ItemAside/ItemAside.component';
 @Component({
   selector: 'app-aside',
   standalone: true,
@@ -9,7 +10,8 @@ import { FaIconComponent } from "@fortawesome/angular-fontawesome";
   imports: [
     NgOptimizedImage,
     FaIconComponent,
-    NgClass
+    NgClass,
+    ItemAsideComponent,
   ],
   styleUrl: './aside.component.css'
 })

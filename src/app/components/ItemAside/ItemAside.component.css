@@ -1,0 +1,46 @@
+li {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: box-shadow 0.7s ease-in-out;
+}
+
+aside.opened li {
+    width: 100%;
+    justify-content: start;
+}
+
+li.active,
+li:hover {
+    background-color: var(--color-primary);
+    color: var(--text-light);
+}
+
+.item-name {
+    display: none;
+}
+
+aside.opened .item-name {
+    display: block;
+}
+
+@media (min-width: 992px) {
+    :host {
+        width: 100%;
+    }
+
+    li {
+        width: 100%;
+        justify-content: start;
+    }
+
+    .item-name {
+        display: block;
+    }
+}

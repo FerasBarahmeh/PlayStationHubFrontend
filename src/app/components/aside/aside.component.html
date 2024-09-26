@@ -13,20 +13,7 @@
     </section>
     <section class="items">
       <ul>
-        <li class="active">
-          <fa-icon [icon]="iconDefinition.faWindowRestore" class="fa-lg"></fa-icon>
-          <span class="item-name">Dashboard</span>
-        </li>
-        <li>
-          <fa-icon [icon]="iconDefinition.faUsers" class="fa-lg"></fa-icon>
-          <span class="item-name">Users</span>
-        </li>
-
-        <div class="separator-line my-2"></div>
-        <li>
-          <fa-icon [icon]="iconDefinition.faGears" class="fa-lg"></fa-icon>
-          <span class="item-name">settings</span>
-        </li>
+        <ng-content></ng-content>
       </ul>
     </section>
     <section class="profile-link">

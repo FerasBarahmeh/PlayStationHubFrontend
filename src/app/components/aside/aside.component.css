@@ -59,7 +59,7 @@ ul {
   align-items: center;
   gap: 10px;
 }
-li {
+/* li {
   width: fit-content;
   display: flex;
   justify-content: center;
@@ -85,7 +85,7 @@ li:hover {
 }
 aside.opened .item-name{
   display: block;
-}
+} */
 .profile-link {
   position: absolute;
   bottom: 15px;
