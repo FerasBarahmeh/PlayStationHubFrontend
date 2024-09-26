@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AsideComponent } from '../../../components/aside/aside.component';
 import { faUsers, faWindowRestore, faGears } from "@fortawesome/free-solid-svg-icons"
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
-import { ItemAsideComponent } from '../../../components/ItemAside/ItemAside.component';
+import { AsideItemComponent } from '../../../components/aside-item/aside-item.component';
 import { AsideGroupItemsComponent } from '../../../components/aside-gruop-item/aside-gruop-items.component';
 
 @Component({
@@ -13,7 +13,7 @@ import { AsideGroupItemsComponent } from '../../../components/aside-gruop-item/a
   imports: [
     FaIconComponent,
     AsideComponent,
-    ItemAsideComponent,
+    AsideItemComponent,
     AsideGroupItemsComponent
   ]
 })

@@ -1,18 +1,18 @@
 import { NgClass } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 
 @Component({
     selector: 'ItemAside',
-    templateUrl: './ItemAside.component.html',
-    styleUrls: ['./ItemAside.component.css'],
+    templateUrl: './aside-item.component.html',
+    styleUrls: ['./aside-item.component.css'],
     standalone: true,
     imports: [
         FaIconComponent,
         NgClass
     ]
 })
-export class ItemAsideComponent {
+export class AsideItemComponent {
     @Input({ required: true }) itemName!: string;
     @Input() ItemIcom?: any;
     @Input() isActive: boolean = false;
