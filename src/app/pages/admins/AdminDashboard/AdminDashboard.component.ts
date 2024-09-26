@@ -3,7 +3,7 @@ import { AsideComponent } from '../../../components/aside/aside.component';
 import { faUsers, faWindowRestore, faGears } from "@fortawesome/free-solid-svg-icons"
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import { ItemAsideComponent } from '../../../components/ItemAside/ItemAside.component';
-import { ItemAsideGroupComponent } from '../../../components/ItemAsideGroup/ItemAsideGroup.component';
+import { AsideGroupItemsComponent } from '../../../components/aside-gruop-item/aside-gruop-items.component';
 
 @Component({
   selector: 'app-AdminDashboard',
@@ -14,7 +14,7 @@ import { ItemAsideGroupComponent } from '../../../components/ItemAsideGroup/Item
     FaIconComponent,
     AsideComponent,
     ItemAsideComponent,
-    ItemAsideGroupComponent
+    AsideGroupItemsComponent
   ]
 })
 export class AdminDashboardComponent {

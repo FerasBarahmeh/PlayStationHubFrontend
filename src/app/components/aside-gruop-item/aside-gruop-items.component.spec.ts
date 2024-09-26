@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { ItemAsideGroupComponent } from './ItemAsideGroup.component';
+import { AsideGroupItemsComponent } from './aside-gruop-items.component';
 
 describe('ItemAsideGroupComponent', () => {
-  let component: ItemAsideGroupComponent;
-  let fixture: ComponentFixture<ItemAsideGroupComponent>;
+  let component: AsideGroupItemsComponent;
+  let fixture: ComponentFixture<AsideGroupItemsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ItemAsideGroupComponent ]
+      declarations: [AsideGroupItemsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ItemAsideGroupComponent);
+    fixture = TestBed.createComponent(AsideGroupItemsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
