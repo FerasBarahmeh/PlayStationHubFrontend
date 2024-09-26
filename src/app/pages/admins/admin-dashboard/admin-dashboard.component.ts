@@ -7,8 +7,8 @@ import { AsideGroupItemsComponent } from '../../../components/aside-gruop-item/a
 
 @Component({
   selector: 'app-AdminDashboard',
-  templateUrl: './AdminDashboard.component.html',
-  styleUrls: ['./AdminDashboard.component.css'],
+  templateUrl: './admin-dashboard.component.html',
+  styleUrls: ['./admin-dashboard.component.css'],
   standalone: true,
   imports: [
     FaIconComponent,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
-import { AdminDashboardComponent } from '../admins/AdminDashboard/AdminDashboard.component';
+import { AdminDashboardComponent } from '../admins/admin-dashboard/admin-dashboard.component';
 
 @Component({
   selector: 'app-Dashboard',
