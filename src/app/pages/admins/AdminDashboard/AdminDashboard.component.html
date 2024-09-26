@@ -1,9 +1,15 @@
 <app-aside>
-    <ItemAside item [isActive]="true" [itemName]="'Dashboard'" [ItemIcom]="iconDefinition.faWindowRestore" />
-    <div class="separator-line"></div>
-    <ItemAside [itemName]="'Users'" [ItemIcom]="iconDefinition.faUsers" />
-    <div class="separator-line"></div>
-    <ItemAside [itemName]="'settings'" [ItemIcom]="iconDefinition.faGears" />
+    <ItemAsideGroup groupName="controles">
+        <ItemAside item [isActive]="true" [itemName]="'Dashboard'" class="mb-1" [ItemIcom]="iconDefinition.faWindowRestore" />
+    </ItemAsideGroup>
+
+    <ItemAsideGroup groupName="users">
+        <ItemAside [itemName]="'Users'" [ItemIcom]="iconDefinition.faUsers" />
+    </ItemAsideGroup>
+
+    <ItemAsideGroup groupName="settings" [separetorLine]="false">
+        <ItemAside [itemName]="'settings'" [ItemIcom]="iconDefinition.faGears" />
+    </ItemAsideGroup>    
 </app-aside>
 
 <main class="page-content">adadasdadasdas</main>
