@@ -5,20 +5,19 @@ import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 
-export const AuthGuard: CanActivateFn = (route, state): Observable<boolean> => {
+
+export const isAuthGuard: CanActivateFn = (route, state): Observable<boolean> => {
   const _AuthService = inject(AuthService);
   const router = inject(Router);
 
   return _AuthService.IsAuthontication().pipe(
     map((isAuthenticated: boolean) => {
-      if (!isAuthenticated) {
+      if (isAuthenticated) {
+        return true;
+      } else {
         router.navigate(['/auth/login']);
         return false;
       }
-      if (isAuthenticated) {
-        router.navigate(['dashboard']);
-      }
-      return true;
     }),
     catchError(() => {
       router.navigate(['/auth/login']);

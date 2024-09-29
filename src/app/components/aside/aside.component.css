@@ -50,6 +50,7 @@ aside.opened .search-container {
   overflow-y: scroll;
   height: 80vh;
   scrollbar-width: none;
+  position: relative;
 }
 
 ul {
@@ -59,37 +60,9 @@ ul {
   align-items: center;
   gap: 25px;
 }
-/* li {
-  width: fit-content;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  padding: 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  color: var(--text-muted);
-  transition: box-shadow 0.7s ease-in-out;
-}
-aside.opened li{
-  width: 100%;
-  justify-content: start;
-}
-li.active,
-li:hover {
-  background-color: var(--color-primary);
-  color: var(--text-light);
-}
-.item-name {
-  display: none;
-}
-aside.opened .item-name{
-  display: block;
-} */
-.profile-link {
+.aside-footer {
   position: absolute;
-  bottom: 15px;
-  min-width: fit-content;
+  bottom: -9px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,7 +73,10 @@ aside.opened .item-name{
   background-color: var(--color-dark);
   cursor: pointer;
 }
-
+.profile-link {
+  display: flex;
+  gap: 10px;
+}
 .profile-link .name {
   font-size: 16px;
 }
@@ -121,6 +97,14 @@ aside.opened .item-name{
   height: 40px;
   border-radius: 50%;
 
+}
+.profile-options{
+  position: absolute;
+  background-color: var(--bs-black);
+  height: 50px;
+  bottom: 83px;
+  width: 100%;
+  border-radius: 3px;
 }
 .switcher {
   position: absolute;
@@ -167,6 +151,7 @@ aside.opened .item-name{
   }
   .profile-link .info {
     display: flex;
+    flex-direction: column;
   }
   .profile-link .name,
   .profile-link .role {
