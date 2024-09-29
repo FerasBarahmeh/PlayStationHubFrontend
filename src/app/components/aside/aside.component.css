@@ -101,10 +101,11 @@ ul {
 .profile-options{
   position: absolute;
   background-color: var(--bs-black);
-  height: 50px;
+  height: max-content;
   bottom: 83px;
   width: 100%;
   border-radius: 3px;
+  z-index: 10;
 }
 .switcher {
   position: absolute;

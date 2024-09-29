@@ -3,7 +3,7 @@
     <fa-icon [icon]="iconDefinition.faAngleDoubleRight" [ngClass]="{'rotate-180' : isOpen} "></fa-icon>
   </div>
   <header class="d-flex content-header">PlayStation Hub</header>
-  <main>
+  <main class="position-relative">
     <section class="search-container">
       <div class="input-group mb-3">
         <fa-icon [icon]="iconDefinition.faSearch" class="search-icon"></fa-icon>
@@ -15,25 +15,27 @@
       <ul>
         <ng-content></ng-content>
       </ul>
-      @if (isPopoverProfileOptionOpen) {
-        <section  class="profile-options">
-          <div class="items">
-            <ItemAside [routerLink]="['/auth/logout']"  itemName="logout" [ItemIcom]="iconDefinition.faArrowLeft"></ItemAside>
-          </div>
-        </section>  
-      }
-      <footer class="aside-footer">
-        <section class="profile-link" (click)="isPopoverProfileOptionOpen = !isPopoverProfileOptionOpen">
-          <div><img class="avatar" src="assets/images/avatars/1.png" alt="avatar1"></div>
-          <div class="info">
-            <div class="name">Feras barahmeh</div>
-            <div class="role">Admin</div>
-          </div>
-        </section>
-   
-      </footer>
+
     </section>
-    
+
+    <footer class="aside-footer">
+      @if (isPopoverProfileOptionOpen) {
+      <section class="profile-options">
+        <div class="subitems">
+          <ItemAside [routerLink]="['/auth/logout']" itemName="logout" [ItemIcom]="iconDefinition.faArrowLeft">
+          </ItemAside>
+        </div>
+      </section>
+      }
+      <section class="profile-link" (click)="isPopoverProfileOptionOpen = !isPopoverProfileOptionOpen">
+        <div><img class="avatar" src="assets/images/avatars/1.png" alt="avatar1"></div>
+        <div class="info">
+          <div class="name">Feras barahmeh</div>
+          <div class="role">Admin</div>
+        </div>
+      </section>
+
+    </footer>
 
   </main>
 </aside>

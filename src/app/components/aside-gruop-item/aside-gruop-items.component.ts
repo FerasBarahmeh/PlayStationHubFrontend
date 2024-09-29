@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'aside-gruop-item',
@@ -9,4 +9,5 @@ import { Component, Input, OnInit } from '@angular/core';
 export class AsideGroupItemsComponent {
     @Input({ required: true }) groupName!: string;
     @Input() separetorLine: boolean = true;
+    @Input() isOpen: boolean = false;
 }
