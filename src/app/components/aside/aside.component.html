@@ -22,8 +22,7 @@
       @if (isPopoverProfileOptionOpen) {
       <section class="profile-options">
         <div class="subitems">
-          <ItemAside [routerLink]="['/auth/logout']" itemName="logout" [ItemIcom]="iconDefinition.faArrowLeft">
-          </ItemAside>
+          <aside-item [routerLink]="['/auth/logout']" itemName="logout" [ItemIcom]="iconDefinition.faArrowLeft" />
         </div>
       </section>
       }

@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 
 @Component({
-    selector: 'ItemAside',
+    selector: 'aside-item',
     templateUrl: './aside-item.component.html',
     styleUrls: ['./aside-item.component.css'],
     standalone: true,
