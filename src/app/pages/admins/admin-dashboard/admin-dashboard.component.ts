@@ -4,9 +4,10 @@ import { faUsers, faWindowRestore, faGears } from "@fortawesome/free-solid-svg-i
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import { AsideItemComponent } from '../../../components/aside-item/aside-item.component';
 import { AsideGroupItemsComponent } from '../../../components/aside-gruop-item/aside-gruop-items.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-AdminDashboard',
+  selector: 'admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.css'],
   standalone: true,
@@ -14,7 +15,8 @@ import { AsideGroupItemsComponent } from '../../../components/aside-gruop-item/a
     FaIconComponent,
     AsideComponent,
     AsideItemComponent,
-    AsideGroupItemsComponent
+    AsideGroupItemsComponent,
+    RouterModule
   ]
 })
 export class AdminDashboardComponent {

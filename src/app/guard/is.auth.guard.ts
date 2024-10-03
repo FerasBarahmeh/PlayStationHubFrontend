@@ -7,19 +7,18 @@ import { catchError, map } from 'rxjs/operators';
 
 
 export const isAuthGuard: CanActivateFn = (route, state): Observable<boolean> => {
-  const _AuthService = inject(AuthService);
+  const _authService = inject(AuthService);
   const router = inject(Router);
 
-  return _AuthService.IsAuthontication().pipe(
+  return _authService.isAuthontication().pipe(
     map((isAuthenticated: boolean) => {
-      if (isAuthenticated) {
-        return true;
-      } else {
+      if (!isAuthenticated && state.url !== '/auth/login') {
         router.navigate(['/auth/login']);
         return false;
       }
+      return isAuthenticated;
     }),
-    catchError(() => {
+    catchError((error) => {
       router.navigate(['/auth/login']);
       return of(false);
     })

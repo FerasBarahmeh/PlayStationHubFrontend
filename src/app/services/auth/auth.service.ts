@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { catchError, map, Observable, of, tap, throwError } from "rxjs";
 import { ILogin } from '../../interfaces/dataTransfareObjects/users/ILogin';
 import { environment } from '../../../environments/environment.development';
 import { ILoginResponse } from '../../interfaces/auth/ILoginResponce';
@@ -11,26 +11,33 @@ import { ILoginResponse } from '../../interfaces/auth/ILoginResponce';
 export class AuthService {
   private readonly API_URL = environment.API_URL + 'auth/';
 
-  constructor(private _HttpClient: HttpClient) { }
+  constructor(private _httpClient: HttpClient) { }
 
   public login(model: ILogin): Observable<ILoginResponse> {
-    return this._HttpClient.post<ILoginResponse>(this.API_URL + "login", model, { withCredentials: true });
+    return this._httpClient.post<ILoginResponse>(this.API_URL + "login", model, { withCredentials: true });
   }
 
   public logout(): Observable<any> {
-    return this._HttpClient.post(this.API_URL + "logout", {}, { withCredentials: true });
+    return this._httpClient.post(this.API_URL + "logout", {}, { withCredentials: true });
   }
 
-  public IsAuthontication(): Observable<boolean> {
-    return this._HttpClient.get<boolean>(this.API_URL + "IsAuth", { withCredentials: true })
+  public isAuthontication(): Observable<boolean> {
+    return this._httpClient.get<boolean>(this.API_URL + "Check", { withCredentials: true }).pipe(
+      map(() => true), catchError((error) => {
+        if (error.status === 401) {
+          return of(false);
+        }
+        return throwError(() => error);
+      })
+    )
   }
-  public IsAdmin(): Observable<any> {
-    return this._HttpClient.get(this.API_URL + 'IsAdmin', { withCredentials: true })
+  public isAdmin(): Observable<any> {
+    return this._httpClient.get(this.API_URL + 'IsAdmin', { withCredentials: true })
   }
-  public IsUser(): Observable<any> {
-    return this._HttpClient.get(this.API_URL + 'IsUser', { withCredentials: true })
+  public isUser(): Observable<any> {
+    return this._httpClient.get(this.API_URL + 'IsUser', { withCredentials: true })
   }
-  public IsOwner(): Observable<any> {
-    return this._HttpClient.get(this.API_URL + 'IsOwner', { withCredentials: true })
+  public isOwner(): Observable<any> {
+    return this._httpClient.get(this.API_URL + 'IsOwner', { withCredentials: true })
   }
 }
