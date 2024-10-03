@@ -5,7 +5,7 @@
             [ItemIcom]="iconDefinition.faWindowRestore" />
     </aside-gruop-item>
 
-    <aside-gruop-item groupName="users">
+    <aside-gruop-item groupName="users" [isOpen]="isUsersRouterActive.isActive">
         <aside-item routerLink="/admin/users" #isUsersRouterActive="routerLinkActive"
             [isActive]="isUsersRouterActive.isActive" routerLinkActive [itemName]="'Users'"
             [ItemIcom]="iconDefinition.faUsers" />
