@@ -1,0 +1,24 @@
+<nav aria-label="Page navigation">
+  <ul class="pagination d-flex justify-content-between">
+    <div class="d-flex">
+      <li class="page-item pointer" (click)="onChangeSlide(pageNumber-1)">
+        <span class="page-link">
+          <fa-icon [icon]="icons.faAngleLeft"></fa-icon>
+        </span>
+      </li>
+      <li class="page-item pointer" (click)="onChangeSlide(pageNumber+1)">
+        <span class="page-link">
+          <fa-icon [icon]="icons.faAngleRight"></fa-icon>
+        </span>
+      </li>
+    </div>
+    <li class="flex-end page-item pointer">
+      <select class="form-select form-select-sm h-100 pointer" aria-label="form-select-sm" (change)="onPageSizeChange($event)">
+        <option [selected]="pageSize == 5">5</option>
+        <option [selected]="pageSize == 10">10</option>
+        <option [selected]="pageSize == 15">15</option>
+        <option [selected]="pageSize == 20">20</option>
+      </select>
+    </li>
+  </ul>
+</nav>
