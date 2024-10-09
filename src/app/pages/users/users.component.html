@@ -1,3 +1,64 @@
 <admin-dashboard>
- users
+    <div class="container mt-5 p-2 bg-dark">
+        <div class="mb-2 d-flex justify-content-between align-items-center ">
+
+            <div class="position-relative">
+                <span class="position-absolute search"><fa-icon [icon]="icons.faSearch"></fa-icon></span>
+                <input class="form-control w-100" placeholder="Search by order#, name...">
+            </div>
+
+            <div class="px-2 mx-1">
+                <span>Filters <i class="fa fa-angle-down"></i></span>
+                <fa-icon [icon]="icons.faEllipsisVertical"></fa-icon>
+            </div>
+        </div>
+        <div class="table-responsive overflow-hidden">
+            <table class="table table-responsive table-borderless">
+                <thead>
+                    <tr class="bg-dark">
+                        <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                        <th scope="col">#</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Email</th>
+                        <th scope="col" class="text-end"><span>options</span></th>
+                    </tr>
+                </thead>
+                <div class=""></div>
+                <tbody class="bg-dark text-light">
+                    @for (user of users; track $index) {
+                    <tr>
+                        <th scope="row"><input class="form-check-input" type="checkbox"></th>
+                        <td>{{user.id}}</td>
+                        <td><img src="https://i.imgur.com/VKOeFyS.png" width="25"> {{user.username}}</td>
+                        <td><fa-icon [icon]="icons.faCheckCircle" class="green"></fa-icon><span class="ms-1">Paid</span>
+                        </td>
+                        <td>{{user.email}}</td>
+
+                        <td class="text-end">
+                            <div class="dropdown">
+                                <fa-icon [icon]="icons.faEllipsisVertical" class="text-info mx-1 pointer"
+                                    id="dropdownMenuOptions" data-bs-toggle="dropdown" aria-expanded="false">
+                                </fa-icon>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuOptions">
+
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <fa-icon [icon]="icons.faTrash" class="text-danger mx-1 pointer"></fa-icon>
+                                            Delete
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+
+            <pagination-nav></pagination-nav>
+        </div>
+
+    </div>
 </admin-dashboard>

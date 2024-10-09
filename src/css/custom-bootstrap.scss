@@ -17,6 +17,25 @@ $form-control-color: #ffffff;
 $form-control-border-color: #404040;
 $form-control-placeholder-color: #A3A3A3;
 
+$form-select-color: $primary;
+
+$bs-pagination-hover-bg: var(--color-dark);
+
+$bs-dropdown-link-hover-bg: var(--color-dark);
+
+
+.page-item .page-link {
+    color: $primary;
+    &:hover {
+        background-color: $bs-pagination-hover-bg;
+    }
+}
+.dropdown-item:hover,
+.dropdown-item:focus{
+    background-color: $bs-dropdown-link-hover-bg !important;
+    opacity: .5;
+}
+
 
 @import "bootstrap/scss/variables";
 // Import the rest of Bootstrap's components

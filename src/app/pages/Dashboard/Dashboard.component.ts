@@ -34,6 +34,6 @@ export class DashboardComponent implements OnInit {
   }
 
   private _setPrivileges(): void {
-    this._authService.isAdmin().subscribe(res => this.isAdmin = res.data);
+    this._authService.isAdmin().subscribe(res => this.isAdmin = res.response);
   }
 }

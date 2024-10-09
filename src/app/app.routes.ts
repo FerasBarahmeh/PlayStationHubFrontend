@@ -7,6 +7,7 @@ import { isNotAuthGuard } from './guard/is.not.auth.guard';
 import { UsersComponent } from './pages/users/users.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UnauthorizedComponent } from './pages/layouts/unauthorized/unauthorized.component';
+import { isAdmin } from './guard/is.admin.guard';
 
 
 export const routes: Routes = [
@@ -21,7 +22,7 @@ export const routes: Routes = [
       {
         path: 'logout',
         component: LogoutComponent,
-        // canActivate: [isAuthGuard],
+        canActivate: [isAuthGuard],
       },
       {
         path: 'notfound',
@@ -37,16 +38,17 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    // canActivate: [isAuthGuard]
+    canActivate: [isAuthGuard]
   },
   {
     path: 'admin',
     children: [
       {
         path: 'users',
-        component: UsersComponent,
+        component: UsersComponent
       }
-    ]
+    ],
+    canActivate: [isAuthGuard, isAdmin]
   },
   { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
 ];

@@ -4,6 +4,7 @@ import { catchError, map, Observable, of, tap, throwError } from "rxjs";
 import { ILogin } from '../../interfaces/dataTransfareObjects/users/ILogin';
 import { environment } from '../../../environments/environment.development';
 import { ILoginResponse } from '../../interfaces/auth/ILoginResponce';
+import { ICheckPrivilege } from '../../interfaces/auth/ICheckPrivilege';
 
 @Injectable({
   providedIn: 'root',
@@ -31,13 +32,13 @@ export class AuthService {
       })
     )
   }
-  public isAdmin(): Observable<any> {
-    return this._httpClient.get(this.API_URL + 'IsAdmin', { withCredentials: true })
+  public isAdmin(): Observable<ICheckPrivilege> {
+    return this._httpClient.get<ICheckPrivilege>(this.API_URL + 'IsAdmin', { withCredentials: true })
   }
-  public isUser(): Observable<any> {
-    return this._httpClient.get(this.API_URL + 'IsUser', { withCredentials: true })
+  public isUser(): Observable<ICheckPrivilege> {
+    return this._httpClient.get<ICheckPrivilege>(this.API_URL + 'IsUser', { withCredentials: true })
   }
-  public isOwner(): Observable<any> {
-    return this._httpClient.get(this.API_URL + 'IsOwner', { withCredentials: true })
+  public isOwner(): Observable<ICheckPrivilege> {
+    return this._httpClient.get<ICheckPrivilege>(this.API_URL + 'IsOwner', { withCredentials: true })
   }
 }
