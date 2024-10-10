@@ -1,6 +1,7 @@
 // Import Bootstrap's core and functions
 @import "bootstrap/scss/functions";
 
+
 // Custom overrides
 $primary: #00B7AB;  // Replace CSS variables with actual hex colors
 $secondary: #C0F3F4;
@@ -20,6 +21,7 @@ $form-control-placeholder-color: #A3A3A3;
 $form-select-color: $primary;
 
 $bs-pagination-hover-bg: var(--color-dark);
+$bs-pagination-disabled-bg: transparent ;
 
 $bs-dropdown-link-hover-bg: var(--color-dark);
 
@@ -35,8 +37,9 @@ $bs-dropdown-link-hover-bg: var(--color-dark);
     background-color: $bs-dropdown-link-hover-bg !important;
     opacity: .5;
 }
-
-
+.pagination .page-item.disabled .page-link {
+    background-color: $bs-pagination-disabled-bg;
+}
 @import "bootstrap/scss/variables";
 // Import the rest of Bootstrap's components
 @import "bootstrap/scss/bootstrap";

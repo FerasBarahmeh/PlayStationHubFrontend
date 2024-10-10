@@ -1,3 +1,4 @@
+import { NgClass } from '@angular/common';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
@@ -9,7 +10,8 @@ import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
   standalone: true,
   imports: [
     FaIconComponent,
-  ]
+    NgClass
+  ],
 })
 
 export class PaginationNavComponent implements OnInit {
@@ -19,41 +21,48 @@ export class PaginationNavComponent implements OnInit {
     faAngleRight,
   };
 
-  public pageNumber: number = 1;
+  @Input()
+  public slideNumber: number = 1;
 
-  public pageSize!: number;
+  public slideSize!: number;
 
-  @Output() onSlideChangeEvent: EventEmitter<{ pageNumber: number, pageSize: number }> = new EventEmitter();
+  @Input({ required: true })
+  public totalCount!: number;
+
+  @Output()
+  slideChange: EventEmitter<{ slideNumber: number, slideSize: number }> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
-    let temp = localStorage.getItem('pageSize');
-    this.pageSize = temp ? Number(temp) : 1;
+    this.slideSize = Number(localStorage.getItem('slideSize')) ?? 5;
   }
 
-  private selectSlide(slide: number) {
-    if (slide >= 1 && slide <= 100) {
-      this.pageNumber = slide;
-      this.onSlideChangeEvent.emit({ pageNumber: this.pageNumber, pageSize: this.pageSize });
+  private onSelectSlide(slide: number) {
+    if (slide >= 1 && slide <= this.totalCount) {
+      this.slideNumber = slide;
+      this.slideChange.emit({ slideNumber: this.slideNumber, slideSize: this.slideSize });
     }
   }
 
   public previousSlide(): void {
-    if (this.pageNumber > 1) {
-      this.selectSlide(this.pageNumber - 1);
+    if (this.slideNumber > 1) {
+      this.onSelectSlide(this.slideNumber - 1);
     }
   }
 
   public nextSlide(): void {
-    if (this.pageNumber < 100) {
-      this.selectSlide(this.pageNumber + 1);
+    console.log(this.slideNumber * this.slideSize);
+
+    if (this.slideNumber * this.slideSize < this.totalCount) {
+      this.onSelectSlide(this.slideNumber + 1);
     }
   }
 
-  public onPageSizeChange(event: Event) {
+  public onSlideSizeChange(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
-    this.pageSize = Number(selectElement.value);
-    localStorage.setItem('pageSize', this.pageSize.toString());
+    this.slideSize = Number(selectElement.value);
+    localStorage.setItem('slideSize', this.slideSize.toString());
+    this.onSelectSlide(this.slideNumber);
   }
 }

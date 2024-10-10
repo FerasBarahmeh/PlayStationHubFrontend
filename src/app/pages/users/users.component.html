@@ -57,7 +57,7 @@
                 </tbody>
             </table>
 
-            <pagination-nav></pagination-nav>
+            <pagination-nav (slideChange)="onSlideChange($event)" [totalCount]="totalCount"></pagination-nav>
         </div>
 
     </div>
