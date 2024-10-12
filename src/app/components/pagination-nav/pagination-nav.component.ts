@@ -52,8 +52,6 @@ export class PaginationNavComponent implements OnInit {
   }
 
   public nextSlide(): void {
-    console.log(this.slideNumber * this.slideSize);
-
     if (this.slideNumber * this.slideSize < this.totalCount) {
       this.onSelectSlide(this.slideNumber + 1);
     }
