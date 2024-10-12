@@ -1,11 +1,43 @@
-<div class="mb-2 d-flex justify-content-between align-items-center ">
-  <div class="position-relative">
-    <span class="position-absolute search-icon"><fa-icon [icon]="icons.faSearch"></fa-icon></span>
-    <input #filterSearchInput class="form-control search-input" placeholder="Serach in table (ctrl+/)">
+<div class="mb-2 d-flex justify-content-between align-items-center flex-column ">
+  @if(selectedFilters != []){
+  <div>
+    @for (item of selectedFilters; track $index) {
+    <span>{{item}},</span>
+    }
   </div>
+  }
 
-  <div class="px-2 mx-1 pointer">
-    <span>Filters</span>
-    <fa-icon [icon]="icons.faFilter"></fa-icon>
+  <div class="mb-2 d-flex justify-content-between align-items-center w-100">
+    <div class="px-2 mx-1 pointer gap-1">
+      <fa-icon class="text-primary" [icon]="icons.faFilter"></fa-icon>
+      <span class="mx-1">Filters</span>
+    </div>
+
+    <div class="position-relative d-flex gap-2 align-items-center">
+      <div>
+        <span class="position-absolute search-icon"><fa-icon [icon]="icons.faSearch"></fa-icon></span>
+        <input #filterSearchInput class="form-control search-input" placeholder="Serach in table (ctrl+/)">
+      </div>
+
+      <div class="dropdown">
+        <button class="btn btn-primary  dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Filter By
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          @for (item of filterableColumns; track $index) {
+          <li class="dropdown-item pointer" (click)="$event.stopPropagation()">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="{{item}}" (change)="selectFilter($event, item)">
+              <label class="form-check-label" for="{{item}}">{{item}}</label>
+            </div>
+          </li>
+          }
+
+
+        </ul>
+      </div>
+
+    </div>
   </div>
 </div>

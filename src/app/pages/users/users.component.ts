@@ -11,7 +11,8 @@ import { ICountResponse } from '../../interfaces/responses/ICountResponse';
 import { map } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BusyService } from '../../services/busy.service';
-import { FilterTableComponent } from "../../components/filter-table/filter-table.component";
+import { FilterTableComponent } from '../../components/filter-table/filter-table.component';
+import { ISearchTable } from '../../interfaces/events/ISearchTable';
 
 @Component({
   selector: 'app-users',
@@ -24,7 +25,7 @@ import { FilterTableComponent } from "../../components/filter-table/filter-table
     NgClass,
     PaginationNavComponent,
     FilterTableComponent
-]
+  ]
 })
 export class UsersComponent implements OnInit, AfterViewInit {
 
@@ -62,5 +63,9 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   onSlideChange(event: any): void {
     this.loadUsers(event.slideNumber, event.slideSize);
+  }
+
+  onSearchStart(event: ISearchTable) {
+    console.log(event);
   }
 }
