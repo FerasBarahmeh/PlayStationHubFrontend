@@ -11,6 +11,7 @@ import { ICountResponse } from '../../interfaces/responses/ICountResponse';
 import { map } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BusyService } from '../../services/busy.service';
+import { FilterTableComponent } from "../../components/filter-table/filter-table.component";
 
 @Component({
   selector: 'app-users',
@@ -21,8 +22,9 @@ import { BusyService } from '../../services/busy.service';
     AdminDashboardComponent,
     FaIconComponent,
     NgClass,
-    PaginationNavComponent
-  ]
+    PaginationNavComponent,
+    FilterTableComponent
+]
 })
 export class UsersComponent implements OnInit, AfterViewInit {
 
