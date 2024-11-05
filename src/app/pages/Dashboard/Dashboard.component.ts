@@ -5,8 +5,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-Dashboard',
-  templateUrl: './Dashboard.component.html',
-  styleUrls: ['./Dashboard.component.css'],
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css'],
   standalone: true,
   imports: [
     AdminDashboardComponent
