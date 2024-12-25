@@ -1,21 +1,18 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
-import { NgClass, NgOptimizedImage } from "@angular/common";
+import { NgClass } from "@angular/common";
 import { faAngleDoubleRight, faSearch, faWindowRestore, faUsers, faGears, faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import { AsideItemComponent } from '../aside-item/aside-item.component';
-import { AsideGroupItemsComponent } from "../aside-gruop-item/aside-gruop-items.component";
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-aside',
   standalone: true,
   templateUrl: './aside.component.html',
   imports: [
-    NgOptimizedImage,
     FaIconComponent,
     NgClass,
     AsideItemComponent,
-    AsideGroupItemsComponent,
     RouterModule
   ],
   styleUrl: './aside.component.css'

@@ -1,17 +1,17 @@
 <app-aside>
-    <aside-gruop-item groupName="controles" [isOpen]="isDashboardRouterActive.isActive">
-        <aside-item routerLink="/dashboard" #isDashboardRouterActive="routerLinkActive"
+    <aside-gruop-item groupName="controles" [isOpen]="true">
+        <aside-item [ngClass]="" routerLink="/dashboard" #isDashboardRouterActive="routerLinkActive"
             [isActive]="isDashboardRouterActive.isActive" routerLinkActive [itemName]="'Dashboard'" class="mb-1"
             [ItemIcom]="iconDefinition.faWindowRestore" />
     </aside-gruop-item>
 
-    <aside-gruop-item groupName="users" [isOpen]="isUsersRouterActive.isActive">
+    <aside-gruop-item groupName="users" [isOpen]="true">
         <aside-item routerLink="/admin/users" #isUsersRouterActive="routerLinkActive"
             [isActive]="isUsersRouterActive.isActive" routerLinkActive [itemName]="'Users'"
             [ItemIcom]="iconDefinition.faUsers" />
     </aside-gruop-item>
 
-    <aside-gruop-item groupName="app" [separetorLine]="false">
+    <aside-gruop-item groupName="app" [separetorLine]="false" [isOpen]="true">
         <aside-item [itemName]="'settings'" [ItemIcom]="iconDefinition.faGears" />
     </aside-gruop-item>
 </app-aside>
