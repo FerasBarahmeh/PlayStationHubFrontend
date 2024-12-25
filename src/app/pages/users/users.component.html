@@ -7,59 +7,60 @@
     <div class="table-responsive overflow-hidden">
       <table class="table table-responsive table-borderless">
         <thead>
-          <tr class="bg-dark">
-            <th scope="col">
-              <input class="form-check-input" type="checkbox" />
-            </th>
-            <th scope="col">#</th>
-            <th scope="col">Username</th>
-            <th scope="col">Status</th>
-            <th scope="col">Email</th>
-            <th scope="col" class="text-end"><span>options</span></th>
-          </tr>
+        <tr class="bg-dark">
+          <th scope="col">
+            <input class="form-check-input" type="checkbox"/>
+          </th>
+          <th scope="col">#</th>
+          <th scope="col">Username</th>
+          <th scope="col">Status</th>
+          <th scope="col">Email</th>
+          <th scope="col" class="text-end"><span>options</span></th>
+        </tr>
         </thead>
         <div class=""></div>
-        <tbody class="bg-dark text-light">
+        <tbody class="bg-dark text-light rounded shadow-lg">
           @for (user of users; track $index) {
-          <tr>
-            <th scope="row">
-              <input class="form-check-input" type="checkbox" />
-            </th>
-            <td>{{ user.id }}</td>
-            <td>
-              <img src="https://i.imgur.com/VKOeFyS.png" width="25" />
-              {{ user.username }}
-            </td>
-            <td>
-              <fa-icon [icon]="icons.faCheckCircle" class="green"></fa-icon
-              ><span class="ms-1">Paid</span>
-            </td>
-            <td>{{ user.email }}</td>
-
-            <td class="text-end">
-              <div class="dropdown">
-                <fa-icon
-                  [icon]="icons.faEllipsisVertical"
-                  class="text-info mx-1 pointer"
-                  id="dropdownMenuOptions"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
+            <tr>
+              <th scope="row">
+                <input class="form-check-input" type="checkbox"/>
+              </th>
+              <td>{{ user.id }}</td>
+              <td>
+                <img src="https://i.imgur.com/VKOeFyS.png" width="25"/>
+                {{ user.username }}
+              </td>
+              <td>
+                <fa-icon [icon]="icons.faCheckCircle" class="green"></fa-icon
                 >
-                </fa-icon>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuOptions">
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      <fa-icon
-                        [icon]="icons.faTrash"
-                        class="text-danger mx-1 pointer"
-                      ></fa-icon>
-                      Delete
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </td>
-          </tr>
+                <span class="ms-1">Paid</span>
+              </td>
+              <td>{{ user.email }}</td>
+
+              <td class="text-end">
+                <div class="dropdown">
+                  <fa-icon
+                    [icon]="icons.faEllipsisVertical"
+                    class="text-info mx-1 pointer"
+                    id="dropdownMenuOptions"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                  </fa-icon>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuOptions">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <fa-icon
+                          [icon]="icons.faTrash"
+                          class="text-danger mx-1 pointer"
+                        ></fa-icon>
+                        Delete
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
           }
         </tbody>
       </table>

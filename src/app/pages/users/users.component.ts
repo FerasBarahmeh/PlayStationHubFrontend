@@ -22,10 +22,9 @@ import { ISearchTable } from '../../interfaces/events/ISearchTable';
   imports: [
     AdminDashboardComponent,
     FaIconComponent,
-    NgClass,
     PaginationNavComponent,
     FilterTableComponent
-  ]
+]
 })
 export class UsersComponent implements OnInit, AfterViewInit {
 
