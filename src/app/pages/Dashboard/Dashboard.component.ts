@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { AdminDashboardComponent } from '../admins/admin-dashboard/admin-dashboard.component';
 import { Router } from '@angular/router';
 

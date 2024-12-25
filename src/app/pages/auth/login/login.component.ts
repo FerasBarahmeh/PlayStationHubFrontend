@@ -10,7 +10,7 @@ import { AppModule } from '../../../app.module';
 import { ILoginResponse } from '../../../interfaces/auth/ILoginResponce';
 import { ILoginAbstractControl } from '../../../interfaces/dataTransfareObjects/abstract-controler/users/ILoginAbstractControl';
 import { ILogin } from '../../../interfaces/dataTransfareObjects/users/ILogin';
-import { AuthService } from '../../../services/auth/auth.service';
+import { AuthService } from '../../../services/auth.service';
 import { SharedService } from '../../../services/shared.service';
 import { hasSpace } from '../../../validators/HasSpaceValidator';
 

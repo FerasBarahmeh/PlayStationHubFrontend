@@ -1,0 +1,48 @@
+<admin-dashboard>
+  <div class="container">
+    <breadcrumb [breadcrumbs]="[
+    { label: 'Admin', url: '/dashboard' },
+    { label: 'Clubs' },
+  ]"/>
+  </div>
+  <div class="container mt-5 p-2 bg-dark">
+    <filter-table
+      (searchStarted)="onSearchStart($event)"
+      [filterableColumns]="['ID', 'Name']"
+    />
+    <table class="table table-responsive table-borderless">
+      <thead>
+      <tr class="bg-dark">
+        <th scope="col">
+          <input class="form-check-input" type="checkbox"/>
+        </th>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Location</th>
+        <th scope="col">options</th>
+      </tr>
+      </thead>
+
+      <tbody class="bg-dark text-light rounded shadow-lg">
+        @for (club of clubs; track $index) {
+          <tr class="text-light">
+            <th scope="row">
+              <input class="form-check-input" type="checkbox"/>
+            </th>
+            <td>{{ club.id }}</td>
+            <td>
+              {{ club.name }}
+            </td>
+            <td>
+              {{ club.location }}
+            </td>
+            <td>
+              {{ club.location }}
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+  </div>
+</admin-dashboard>

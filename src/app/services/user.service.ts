@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment.development';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { IUser } from '../../interfaces/user/IUser';
-import { map, Observable, retry } from 'rxjs';
-import { IPagedResponse } from '../../interfaces/responses/IPagedResponse';
-import { ICountResponse } from '../../interfaces/responses/ICountResponse';
+import {Injectable} from '@angular/core';
+import {environment} from '../../environments/environment.development';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {IUser} from '../interfaces/user/IUser';
+import {map, Observable} from 'rxjs';
+import {IPagedResponse} from '../interfaces/responses/IPagedResponse';
+import {ICountResponse} from '../interfaces/responses/ICountResponse';
 
 @Injectable({
   providedIn: 'root'

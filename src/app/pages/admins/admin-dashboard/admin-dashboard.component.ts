@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
-import { AsideComponent } from '../../../components/aside/aside.component';
-import { faUsers, faWindowRestore, faGears } from "@fortawesome/free-solid-svg-icons"
-import { FaIconComponent } from "@fortawesome/angular-fontawesome";
-import { AsideItemComponent } from '../../../components/aside-item/aside-item.component';
-import { AsideGroupItemsComponent } from '../../../components/aside-gruop-item/aside-gruop-items.component';
-import { RouterModule } from '@angular/router';
+import {Component} from '@angular/core';
+import {AsideComponent} from '../../../components/aside/aside.component';
+import {faGears, faUsers, faWindowRestore, faShop} from "@fortawesome/free-solid-svg-icons"
+import {AsideItemComponent} from '../../../components/aside-item/aside-item.component';
+import {AsideGroupItemsComponent} from '../../../components/aside-gruop-item/aside-gruop-items.component';
+import {RouterModule} from '@angular/router';
 import {NgClass} from "@angular/common";
 
 @Component({
@@ -26,6 +25,7 @@ export class AdminDashboardComponent {
     faWindowRestore,
     faUsers,
     faGears,
+    faShop,
   }
 
 }
