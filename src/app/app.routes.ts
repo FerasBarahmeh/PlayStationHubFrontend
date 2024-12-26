@@ -1,6 +1,5 @@
 import {Routes} from '@angular/router';
 import {LoginComponent} from "./pages/auth/login/login.component";
-import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import {LogoutComponent} from './pages/auth/logout/logout.component';
 import {isAuthGuard} from './guard/is.auth.guard';
 import {isNotAuthGuard} from './guard/is.not.auth.guard';
@@ -11,11 +10,18 @@ import {isAdmin} from './guard/is.admin.guard';
 import {ClubsComponent} from "./pages/admins/clubs/clubs.component";
 import {ClubComponent} from "./pages/admins/club/club.component";
 import {HomeComponent} from "./pages/home/home.component";
+import {ClubComponent as ClubPage} from "./pages/users/club/club.component";
+import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 
 export const routes: Routes = [
   {
     path:'home',
     component: HomeComponent,
+    canActivate: [isAuthGuard, isNotAuthGuard],
+  },
+  {
+    path:'club-details',
+    component: ClubPage,
     canActivate: [isAuthGuard, isNotAuthGuard],
   },
   {
