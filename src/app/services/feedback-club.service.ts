@@ -16,11 +16,20 @@ export class FeedbackClubService {
   constructor(private _http: HttpClient) { }
 
   public getSummary(feedbackClubId: number): Observable<IResponse<IClub>> {
-    return this._http.post<IResponse<IClub>>(this.API_URL+'GenerateSummary', {'ClubID': feedbackClubId}, {withCredentials: true})
+    return this._http.post<IResponse<IClub>>(this.API_URL+'GenerateSummary', {'ID': feedbackClubId}, {withCredentials: true})
       .pipe(
         map(response=>{
           return response;
         }),
+      )
+  }
+
+  public getFeedbacks(clubId: number): Observable<IResponse<any>> {
+    return this._http.post<IResponse<any>>(this.API_URL+'GetFeedbacks', {'ID':clubId}, {withCredentials: true})
+      .pipe(
+        map(response => {
+          return response;
+        })
       )
   }
 }
