@@ -1,12 +1,10 @@
-
-<div class="gropu-aside-item" >
-  <div class="group-name " (click)="isOpen = !isOpen">{{ groupName}}</div>
+<div class="gropu-aside-item">
+  <div class="group-name" (click)="isOpen = !isOpen">{{ groupName }}</div>
   @if (isOpen) {
-  <ng-content></ng-content>
+    <ng-content></ng-content>
   }
 
   @if (separetorLine) {
-
-  <div class="separator-line mt-2"></div>
+    <div class="separator-line mt-2"></div>
   }
 </div>
