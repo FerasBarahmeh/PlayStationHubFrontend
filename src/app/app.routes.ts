@@ -10,8 +10,14 @@ import {UnauthorizedComponent} from './pages/layouts/unauthorized/unauthorized.c
 import {isAdmin} from './guard/is.admin.guard';
 import {ClubsComponent} from "./pages/admins/clubs/clubs.component";
 import {ClubComponent} from "./pages/admins/club/club.component";
+import {HomeComponent} from "./pages/home/home.component";
 
 export const routes: Routes = [
+  {
+    path:'home',
+    component: HomeComponent,
+    canActivate: [isAuthGuard, isNotAuthGuard],
+  },
   {
     path: 'auth',
     children: [
@@ -59,5 +65,6 @@ export const routes: Routes = [
     ],
     canActivate: [isAuthGuard, isAdmin]
   },
+
   { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
 ];

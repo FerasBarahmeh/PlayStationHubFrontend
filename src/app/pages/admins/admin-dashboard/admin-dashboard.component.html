@@ -3,6 +3,9 @@
     <aside-item [ngClass]="" routerLink="/dashboard" #isDashboardRouterActive="routerLinkActive"
                 [isActive]="isDashboardRouterActive.isActive" routerLinkActive [itemName]="'Dashboard'" class="mb-1"
                 [ItemIcom]="iconDefinition.faWindowRestore"/>
+    <aside-item [ngClass]="" routerLink="/home" #isHomeRouterActive="routerLinkActive"
+                [isActive]="isHomeRouterActive.isActive" routerLinkActive [itemName]="'Home'" class="mb-1"
+                [ItemIcom]="iconDefinition.faLayerGroup"/>
   </aside-gruop-item>
 
   <aside-gruop-item groupName="users" [isOpen]="true">

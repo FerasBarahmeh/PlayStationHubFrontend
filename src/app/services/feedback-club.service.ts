@@ -32,4 +32,13 @@ export class FeedbackClubService {
         })
       )
   }
+
+  public setFeedback(feedbackClubId: number, feedback: string) : Observable<IResponse<any>> {
+    return this._http.post<IResponse<any>>(this.API_URL, {'clubID':feedbackClubId, 'feedback': feedback}, {withCredentials: true})
+    .pipe(
+      map(response =>{
+        return response;
+      })
+    )
+  }
 }
