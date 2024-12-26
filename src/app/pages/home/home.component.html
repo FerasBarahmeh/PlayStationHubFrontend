@@ -58,10 +58,21 @@
         <div class="card w-full">
           <p class="mb-4"><span class="text-primary font-italic me-1">Ratting</span>club
           <div class="card-body d-flex flex-column gap-3">
-          @if (insertMessage !='')
-          {
-            <p class="text-success" style="font-size: 77rem;">{{insertMessage}}</p>
+
+            @if (insertMessage != '') {
+              <p class="text-success" style="font-size: 0.77rem;">{{ insertMessage }}</p>
+            }
+          @if (errorMessage && Object.keys((errorMessage)).length > 0) {
+            @for (key of Object.keys(errorMessage); track key) {
+              <strong class="text-info" style="font-size: 0.85rem;">{{ key }}:</strong>
+              <ul>
+                @for (message of errorMessage[key]; track message) {
+                  <li class="text-danger" style="font-size: 0.77rem;">{{message}}</li>
+                }
+              </ul>
+            }
           }
+
             <select [(ngModel)]="clubId" class="custom-select w-full bg-dark-subtle border py-2 px-1 pointer rounded">
               <option>Chose club...</option>
               @for (club of clubs; track club.id) {
@@ -69,7 +80,7 @@
               }
             </select>
             <div class="input-group">
-              <textarea class="form-control" [(ngModel)]="feedback"  placeholder="Write your vision"></textarea>
+              <textarea class="form-control" [(ngModel)]="feedback" placeholder="Write your vision"></textarea>
             </div>
             <button class="btn btn-primary my-1" (click)="setFeedback()">Give Feedback</button>
           </div>
@@ -95,13 +106,21 @@
             <div class="team-member d-flex align-items-start">
               <div class="pic"><img src="assets/images/clubs/1.jpeg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4 (click)="toClub(club)" class="pointer">{{club.name}}</h4>
+                <h4 (click)="toClub(club)" class="pointer">{{ club.name }}</h4>
                 <span>we are not only but the best</span>
                 <ul class="social">
-                  <li><fa-icon [icon]="iconDefinition.faXTwitter"></fa-icon></li>
-                  <li><fa-icon [icon]="iconDefinition.faFacebook"></fa-icon></li>
-                  <li><fa-icon [icon]="iconDefinition.faInstagram"></fa-icon></li>
-                  <li><fa-icon [icon]="iconDefinition.faSnapchat"></fa-icon></li>
+                  <li>
+                    <fa-icon [icon]="iconDefinition.faXTwitter"></fa-icon>
+                  </li>
+                  <li>
+                    <fa-icon [icon]="iconDefinition.faFacebook"></fa-icon>
+                  </li>
+                  <li>
+                    <fa-icon [icon]="iconDefinition.faInstagram"></fa-icon>
+                  </li>
+                  <li>
+                    <fa-icon [icon]="iconDefinition.faSnapchat"></fa-icon>
+                  </li>
                 </ul>
               </div>
             </div>

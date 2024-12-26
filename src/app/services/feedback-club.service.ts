@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import {map, Observable} from "rxjs";
+import {map, Observable, throwError} from "rxjs";
 import {IResponse} from "../interfaces/responses/IResponse";
 import {IClub} from "../interfaces/clubs/IClub";
+import {catchError} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +39,10 @@ export class FeedbackClubService {
     .pipe(
       map(response =>{
         return response;
+      }),
+      catchError((error) => {
+        return throwError(() => error.error.errors || 'An unexpected error occurred.');
       })
-    )
+    );
   }
 }

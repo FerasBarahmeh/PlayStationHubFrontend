@@ -10,6 +10,7 @@ import {Router, RouterLink} from "@angular/router";
 import {faX} from "@fortawesome/free-solid-svg-icons"
 import {faInstagram, faFacebook, faSnapchat, faXTwitter} from "@fortawesome/free-brands-svg-icons"
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {JsonPipe} from "@angular/common";
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,8 @@ import {FaIconComponent} from "@fortawesome/angular-fontawesome";
   imports: [
     FormsModule,
     RouterLink,
-    FaIconComponent
+    FaIconComponent,
+    JsonPipe
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -27,6 +29,7 @@ export class HomeComponent implements AfterViewInit {
   public feedback: string = '';
   public clubId: number | null = null;
   public insertMessage: string = '';
+  public errorMessage:  { [key: string]: string[] } = {};
   public isAuth: string | null = localStorage.getItem('isAuth');
   public iconDefinition = {
     faXTwitter,
@@ -55,15 +58,23 @@ export class HomeComponent implements AfterViewInit {
     if (this.feedback === '' || this.clubId === null) {
       return;
     }
-    this.feedbackClubService.setFeedback(this.clubId, this.feedback).subscribe((res: IResponse<any>) => {
-      this.feedback = '';
-      this.clubId = null;
-      this.insertMessage = res.message;
+    this.feedbackClubService.setFeedback(this.clubId, this.feedback).subscribe({
+      next: (res) => {
+        this.insertMessage = res.message;
+        this.errorMessage = {};
+      },
+      error: (err) => {
+        this.errorMessage = Array.isArray(err) ? err.join(', ') : err;
+        console.log(this.errorMessage)
+        this.insertMessage = '';
+      },
     });
   }
 
   public toClub(club: IClub) {
     this.router.navigate(['club-details'], {state: club}).then();
   }
+
+  protected readonly Object = Object;
 }
 
