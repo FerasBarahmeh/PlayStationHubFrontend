@@ -11,9 +11,9 @@
                 [ItemIcom]="iconDefinition.faUsers"/>
   </aside-gruop-item>
 
-  <aside-gruop-item groupName="app" [separetorLine]="false" #isClubsRouterActive [isOpen]="true">
-    <aside-item routerLink="/admin/clubs" [itemName]="'clubs'" [ItemIcom]="iconDefinition.faShop"/>
-    <aside-item [itemName]="'settings'" [ItemIcom]="iconDefinition.faGears"/>
+  <aside-gruop-item groupName="app" [separetorLine]="false"  [isOpen]="true">
+    <aside-item routerLink="/admin/clubs" [itemName]="'clubs'" #isClubsRouterActive="routerLinkActive" [isActive]="isClubsRouterActive.isActive" routerLinkActive  [ItemIcom]="iconDefinition.faShop"/>
+<!--    <aside-item [itemName]="'settings'" [ItemIcom]="iconDefinition.faGears"/>-->
   </aside-gruop-item>
 </app-aside>
 

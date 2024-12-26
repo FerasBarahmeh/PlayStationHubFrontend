@@ -23,21 +23,35 @@
       </tr>
       </thead>
 
-      <tbody class="bg-dark text-light rounded shadow-lg">
+      <tbody class="bg-dark text-light shadow-lg">
         @for (club of clubs; track $index) {
           <tr class="text-light">
             <th scope="row">
               <input class="form-check-input" type="checkbox"/>
             </th>
             <td>{{ club.id }}</td>
-            <td>
+            <td class="pointer" [routerLink]="['/admin/clubs/club']" [state]="{ club: club }">
               {{ club.name }}
             </td>
             <td>
               {{ club.location }}
             </td>
-            <td>
-              {{ club.location }}
+            <td class="text-end">
+              <div class="dropdown">
+                <fa-icon [icon]="icons.faEllipsisVertical" class="text-info mx-1 pointer" id="dropdownMenuOptions" data-bs-toggle="dropdown" aria-expanded="false"/>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuOptions">
+                  <li class="dropdown-item d-flex align-items-center pointer gap-3"
+                      >
+                    <fa-icon [icon]="icons.faInfo" class="text-info mx-1 pointer"/>
+                    Summary
+                  </li>
+
+                  <li class="dropdown-item d-flex align-items-center pointer gap-3">
+                    <fa-icon [icon]="icons.faTrash" class="text-danger mx-1 pointer"/>
+                    <span>Delete</span>
+                  </li>
+                </ul>
+              </div>
             </td>
           </tr>
         }

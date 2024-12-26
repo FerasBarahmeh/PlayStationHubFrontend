@@ -8,8 +8,8 @@ import {UsersComponent} from './pages/users/users.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {UnauthorizedComponent} from './pages/layouts/unauthorized/unauthorized.component';
 import {isAdmin} from './guard/is.admin.guard';
-import {ClubsComponent} from "./pages/clubs/clubs.component";
-
+import {ClubsComponent} from "./pages/admins/clubs/clubs.component";
+import {ClubComponent} from "./pages/admins/club/club.component";
 
 export const routes: Routes = [
   {
@@ -51,6 +51,10 @@ export const routes: Routes = [
       {
         path: 'clubs',
         component: ClubsComponent
+      },
+      {
+        path: 'clubs/club',
+        component: ClubComponent,
       }
     ],
     canActivate: [isAuthGuard, isAdmin]
