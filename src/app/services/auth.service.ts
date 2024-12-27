@@ -23,7 +23,7 @@ export class AuthService {
   }
 
   public isAuthontication(): Observable<boolean> {
-    return this._httpClient.get<boolean>(this.API_URL + "Check", { withCredentials: true }).pipe(
+    return this._httpClient.post<boolean>(this.API_URL + "IsAuth", {},{ withCredentials: true }).pipe(
       map(() => true), catchError((error) => {
         if (error.status === 401) {
           return of(false);
