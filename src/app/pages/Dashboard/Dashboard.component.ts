@@ -4,7 +4,7 @@ import { AdminDashboardComponent } from '../admins/admin-dashboard/admin-dashboa
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-Dashboard',
+  selector: 'abstract-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
   standalone: true,
