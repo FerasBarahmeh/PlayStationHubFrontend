@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "http://playstationhub.runasp.net",
+    "secure": false,
+    "changeOrigin": true
+  }
+}
