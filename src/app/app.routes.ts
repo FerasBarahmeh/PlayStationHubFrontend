@@ -15,12 +15,12 @@ import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 
 export const routes: Routes = [
   {
-    path:'home',
+    path: 'home',
     component: HomeComponent,
     canActivate: [isAuthGuard, isNotAuthGuard],
   },
   {
-    path:'club-details',
+    path: 'club-details',
     component: ClubPage,
     canActivate: [isAuthGuard, isNotAuthGuard],
   },
@@ -72,5 +72,5 @@ export const routes: Routes = [
     canActivate: [isAuthGuard, isAdmin]
   },
 
-  { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
+  {path: '', redirectTo: '/auth/login', pathMatch: 'full'},
 ];
