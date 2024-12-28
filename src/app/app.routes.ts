@@ -17,12 +17,12 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [isAuthGuard, isNotAuthGuard],
+    // canActivate: [isAuthGuard, isNotAuthGuard],
   },
   {
     path: 'club-details',
     component: ClubPage,
-    canActivate: [isAuthGuard, isNotAuthGuard],
+    // canActivate: [isAuthGuard, isNotAuthGuard],
   },
   {
     path: 'auth',
@@ -30,12 +30,12 @@ export const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent,
-        canActivate: [isNotAuthGuard],
+        // canActivate: [isNotAuthGuard],
       },
       {
         path: 'logout',
         component: LogoutComponent,
-        canActivate: [isAuthGuard],
+        // canActivate: [isAuthGuard],
       },
       {
         path: 'notfound',
@@ -51,7 +51,7 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [isAuthGuard]
+    // canActivate: [isAuthGuard]
   },
   {
     path: 'admin',
@@ -69,7 +69,7 @@ export const routes: Routes = [
         component: ClubComponent,
       }
     ],
-    canActivate: [isAuthGuard, isAdmin]
+    // canActivate: [isAuthGuard, isAdmin]
   },
 
   {path: '', redirectTo: '/auth/login', pathMatch: 'full'},

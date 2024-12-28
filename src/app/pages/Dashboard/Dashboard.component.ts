@@ -29,8 +29,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this._setPrivileges();
-    if (!this.isAdmin || !this.isOwner)
-      this.router.navigateByUrl('auth/login');
+    // if (!this.isAdmin || !this.isOwner)
+    //   this.router.navigateByUrl('auth/login');
   }
 
   private _setPrivileges(): void {
