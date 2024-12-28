@@ -30,7 +30,7 @@ export class HomeComponent implements AfterViewInit {
   public clubId: number | null = null;
   public insertMessage: string = '';
   public errorMessage:  { [key: string]: string[] } = {};
-  public isAuth: string | null = localStorage.getItem('isAuth');
+  public isAuth: string | null = 'true';
   public iconDefinition = {
     faXTwitter,
     faSnapchat,

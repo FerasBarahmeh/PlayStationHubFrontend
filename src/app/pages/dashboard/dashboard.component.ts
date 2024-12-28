@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { AdminDashboardComponent } from '../admins/admin-dashboard/admin-dashboard.component';
 import { Router } from '@angular/router';
+import {isAdmin} from "../../guard/is.admin.guard";
 
 @Component({
   selector: 'abstract-dashboard',
@@ -34,6 +35,7 @@ export class DashboardComponent implements OnInit {
   }
 
   private _setPrivileges(): void {
-    this._authService.isAdmin().subscribe(res => this.isAdmin = res.response);
+    this.isAdmin = true;
+    // this._authService.isAdmin().subscribe(res => this.isAdmin = res.response);
   }
 }

@@ -37,13 +37,13 @@ export class ClubComponent implements OnInit, AfterViewInit {
   }
 
   private  _setSummary() {
-    this._feedbackService.getSummary(this.club.id).subscribe((res: IResponse<any>) => {
+    this._feedbackService.getSummary(this.club?.id).subscribe((res: IResponse<any>) => {
       this.clubSummary = res;
     });
   }
 
   private _setFeedbacks(): void {
-    this._feedbackService.getFeedbacks(this.club.id).subscribe((res: IResponse<any>) => {
+    this._feedbackService.getFeedbacks(this.club?.id).subscribe((res: IResponse<any>) => {
       this.feedbacks = res;
     })
   }
