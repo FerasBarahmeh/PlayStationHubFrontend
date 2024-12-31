@@ -49,7 +49,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.spinner.idle();
   }
-  private loadUsers(slideNumber: number = 1, slideSize: number = Number(localStorage.getItem('slideSize')) ?? 5) {
+  private loadUsers(slideNumber: number = 1, slideSize: number = Number(localStorage.getItem('slideSize')??5)) {
     this.spinner.busy();
     this._userService.users(slideNumber, slideSize).subscribe((res: IPagedResponse<IUser>) => {
       this.users = res.data;

@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { faFilter, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faSearch, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import { ISearchTable } from '../../interfaces/events/ISearchTable';
 
 @Component({
@@ -16,7 +16,8 @@ export class FilterTableComponent {
 
   public icons = {
     faSearch,
-    faFilter
+    faFilter,
+    faEllipsisVertical
   };
 
   @ViewChild('filterSearchInput') filterSearchInput !: ElementRef;
