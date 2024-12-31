@@ -1,0 +1,90 @@
+<admin-dashboard>
+  <breadcrumb [breadcrumbs]="[{'label':'Clubs', url:'/admin/clubs' }, {'label':'Overviews' }]"></breadcrumb>
+  <div class="container mt-5">
+    <div class="row gap-2">
+      <!-- Result filter -->
+      <div class="col-7 card bg-dark">
+        <div class="card-header bg-transparent">
+          <div class="d-flex gap-3 align-items-center">
+            <div class="text-primary">
+              <fa-icon [icon]="icons.faScroll"/>
+            </div>
+            <div>Overview</div>
+          </div>
+          <div class="separator-line text-muted mt-2"></div>
+        </div>
+        <div class="card-body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, quae, recusandae! A architecto aut debitis
+          dignissimos impedit laborum magnam natus obcaecati quasi quod, repellat saepe sapiente sint soluta unde
+          voluptatibus!
+        </div>
+      </div>
+
+      <!-- Form filter-->
+      <div class="col-4 card bg-black filter-card">
+        <div class="card-header">
+          <div class="d-flex gap-3 align-items-center">
+            <div class="text-primary">
+              <fa-icon [icon]="icons.faLed"/>
+            </div>
+            <div>Club Insights</div>
+          </div>
+          <div class="separator-line text-muted mt-2"></div>
+        </div>
+        <form [formGroup]="overviewForm" (ngSubmit)="generateOverview()">
+          <div class="card-body">
+            <div class="form-group col-12">
+              <label for="clubId" class="small text-capitalize">state</label>
+              <select id="clubId" class="form-control pointer" formControlName="clubId">
+                <option disabled selected>Club</option>
+                @for (club of clubs; track club.id) {
+                  <option [value]="club.id">{{ club.name }}</option>
+                }
+              </select>
+              @if ((overviewForm.get('clubId')?.touched || submitted) && overviewForm.get('clubId')?.hasError('required')) {
+                <small class="text-danger form-text">This field is required.</small>
+              }
+
+            </div>
+
+            <div class="form-group mt-3">
+              <label for="prompt-textarea" class="small text-capitalize">write custom prompt</label>
+              <textarea formControlName="prompt"
+                        class="form-control prompt-textarea"
+                        id="prompt-textarea"
+                        rows="3"
+                        placeholder=" Write a summary for these comments (pls ignore each comment not give positive or nigative feedback like propaganda or comment for joking)"
+              ></textarea>
+              @if ((submitted || overviewForm.get('prompt')?.touched) && overviewForm.get('prompt')?.hasError('maxlength')) {
+                <small class="text-danger form-text">max length is 500 character.</small>
+              }
+            </div>
+
+            <h6 class="separator-with-word text-muted text-capitalize mt-4 text-end card-section-title filter-section-title">
+              filter by date
+              <div class="separator-line"></div>
+            </h6>
+
+            <div class="form-group mt-3">
+              <label for="from" class="small text-capitalize">from</label>
+              <input formControlName="from" type="date" class="form-control" id="from">
+            </div>
+
+            <div class="form-group mt-3">
+              <label for="to" class="small text-capitalize">to</label>
+              <input formControlName="to" type="date" class="form-control" id="to">
+            </div>
+
+            <div class="form-group mt-3 text-end">
+<!--              [disabled]="overviewForm.invalid"-->
+              <button class="btn btn-primary btn-sm text-capitalize" >
+                generate overview
+              </button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</admin-dashboard>

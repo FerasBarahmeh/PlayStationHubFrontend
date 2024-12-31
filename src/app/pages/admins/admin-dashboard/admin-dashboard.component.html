@@ -22,6 +22,14 @@
                 routerLinkActive
                 [ItemIcom]="iconDefinition.faShop"
     />
+    <aside-item routerLink="/clubs/overviews"
+                [itemName]="'Overviews'"
+                #isOverviewsRouterActive="routerLinkActive"
+                [isActive]="isOverviewsRouterActive.isActive"
+                routerLinkActive
+                [ItemIcom]="iconDefinition.faEye"
+    />
+
   </aside-gruop-item>
 </app-aside>
 

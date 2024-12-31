@@ -1,0 +1,31 @@
+.filter-card {
+  max-height: 500px;
+  min-height: 500px;
+  overflow-y: scroll;
+}
+.filter-card::-webkit-scrollbar {
+  display: none;
+}
+.prompt-textarea,
+.prompt-textarea::placeholder,
+.card-section-title {
+  font-size: 0.77rem;
+}
+.prompt-textarea::placeholder {
+  color: var(--text-muted);
+}
+.prompt-textarea::-webkit-scrollbar {
+  display: none !important;
+}
+.separator-with-word {
+  position: relative;
+  color: var(--text-muted);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.separator-with-word .separator-line {
+  text-align: end;
+  flex: 1;
+}

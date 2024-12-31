@@ -1,17 +1,15 @@
 import {Routes} from '@angular/router';
 import {LoginComponent} from "./pages/auth/login/login.component";
 import {LogoutComponent} from './pages/auth/logout/logout.component';
-import {isAuthGuard} from './guard/is.auth.guard';
-import {isNotAuthGuard} from './guard/is.not.auth.guard';
 import {UsersComponent} from './pages/admins/users/users.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {UnauthorizedComponent} from './pages/layouts/unauthorized/unauthorized.component';
-import {isAdmin} from './guard/is.admin.guard';
 import {ClubsComponent} from "./pages/admins/clubs/clubs.component";
 import {ClubComponent} from "./pages/admins/club/club.component";
 import {HomeComponent} from "./pages/home/home.component";
 import {ClubComponent as ClubPage} from "./pages/users/club/club.component";
 import {DashboardComponent} from "./pages/dashboard/dashboard.component";
+import {OverviewsComponent} from "./pages/overviews/overviews.component";
 
 export const routes: Routes = [
   {
@@ -62,7 +60,7 @@ export const routes: Routes = [
       },
       {
         path: 'clubs',
-        component: ClubsComponent
+        component: ClubsComponent,
       },
       {
         path: 'clubs/club',
@@ -71,6 +69,9 @@ export const routes: Routes = [
     ],
     // canActivate: [isAuthGuard, isAdmin]
   },
-
+  {
+    path: 'clubs/overviews',
+    component: OverviewsComponent,
+  },
   {path: '', redirectTo: '/auth/login', pathMatch: 'full'},
 ];

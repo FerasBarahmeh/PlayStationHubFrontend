@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {AsideComponent} from '../../../components/aside/aside.component';
-import {faGears, faUsers, faWindowRestore, faShop, faLayerGroup} from "@fortawesome/free-solid-svg-icons"
+import {faGears, faUsers, faWindowRestore, faShop, faLayerGroup, faEye} from "@fortawesome/free-solid-svg-icons"
 import {AsideItemComponent} from '../../../components/aside-item/aside-item.component';
 import {AsideGroupItemsComponent} from '../../../components/aside-gruop-item/aside-gruop-items.component';
 import {RouterModule} from '@angular/router';
@@ -27,6 +27,7 @@ export class AdminDashboardComponent {
     faGears,
     faShop,
     faLayerGroup,
+    faEye,
   }
 
 }
