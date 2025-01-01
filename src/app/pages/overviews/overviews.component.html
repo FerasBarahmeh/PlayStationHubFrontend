@@ -50,7 +50,7 @@
                         class="form-control prompt-textarea"
                         id="prompt-textarea"
                         rows="3"
-                        placeholder="Write a summary (overview) for these comments (pls ignore each comment not give positive or nigative feedback like propaganda or comment for joking)"
+                        placeholder="You are a helpful assistant. Summarize the following feedback comments into a cohesive summary that captures the key themes, strengths, and areas for improvement. Feedback: "
               ></textarea>
               @if ((submitted || overviewForm.get('prompt')?.touched) && overviewForm.get('prompt')?.hasError('maxlength')) {
                 <small class="text-danger form-text">max length is 500 character.</small>
