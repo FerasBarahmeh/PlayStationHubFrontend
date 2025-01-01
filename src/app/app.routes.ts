@@ -70,6 +70,10 @@ export const routes: Routes = [
     // canActivate: [isAuthGuard, isAdmin]
   },
   {
+    path: 'clubs/overviews/:id',
+    component: OverviewsComponent,
+  },
+  {
     path: 'clubs/overviews',
     component: OverviewsComponent,
   },

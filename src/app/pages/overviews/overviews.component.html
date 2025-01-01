@@ -13,10 +13,7 @@
           </div>
           <div class="separator-line text-muted mt-2"></div>
         </div>
-        <div class="card-body">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, quae, recusandae! A architecto aut debitis
-          dignissimos impedit laborum magnam natus obcaecati quasi quod, repellat saepe sapiente sint soluta unde
-          voluptatibus!
+        <div class="card-body overview-box" [innerHTML]="overview">
         </div>
       </div>
 
@@ -34,50 +31,51 @@
         <form [formGroup]="overviewForm" (ngSubmit)="generateOverview()">
           <div class="card-body">
             <div class="form-group col-12">
-              <label for="clubId" class="small text-capitalize">state</label>
-              <select id="clubId" class="form-control pointer" formControlName="clubId">
-                <option disabled selected>Club</option>
+              <label for="clubId" class="small text-capitalize label-input">state</label>
+              <select id="clubId" class="form-control pointer" formControlName="id">
+                <option [value]="null">Club...</option>
                 @for (club of clubs; track club.id) {
-                  <option [value]="club.id">{{ club.name }}</option>
+                  <option [value]="club.id" [selected]="overviewForm.value.id == club.id">{{ club.name }}</option>
                 }
               </select>
-              @if ((overviewForm.get('clubId')?.touched || submitted) && overviewForm.get('clubId')?.hasError('required')) {
+              @if ((overviewForm.get('id')?.touched || submitted) && overviewForm.get('id')?.hasError('required')) {
                 <small class="text-danger form-text">This field is required.</small>
               }
 
             </div>
 
             <div class="form-group mt-3">
-              <label for="prompt-textarea" class="small text-capitalize">write custom prompt</label>
+              <label for="prompt-textarea" class="small text-capitalize label-input">write custom prompt</label>
               <textarea formControlName="prompt"
                         class="form-control prompt-textarea"
                         id="prompt-textarea"
                         rows="3"
-                        placeholder=" Write a summary for these comments (pls ignore each comment not give positive or nigative feedback like propaganda or comment for joking)"
+                        placeholder="Write a summary (overview) for these comments (pls ignore each comment not give positive or nigative feedback like propaganda or comment for joking)"
               ></textarea>
               @if ((submitted || overviewForm.get('prompt')?.touched) && overviewForm.get('prompt')?.hasError('maxlength')) {
                 <small class="text-danger form-text">max length is 500 character.</small>
               }
             </div>
 
-            <h6 class="separator-with-word text-muted text-capitalize mt-4 text-end card-section-title filter-section-title">
+            <h6
+              class="separator-with-word text-muted text-capitalize mt-4 text-end card-section-title filter-section-title">
               filter by date
               <div class="separator-line"></div>
             </h6>
 
             <div class="form-group mt-3">
-              <label for="from" class="small text-capitalize">from</label>
+              <label for="from" class="small text-capitalize label-input">from</label>
               <input formControlName="from" type="date" class="form-control" id="from">
             </div>
 
             <div class="form-group mt-3">
-              <label for="to" class="small text-capitalize">to</label>
+              <label for="to" class="small text-capitalize  label-input ">to</label>
               <input formControlName="to" type="date" class="form-control" id="to">
             </div>
 
             <div class="form-group mt-3 text-end">
-<!--              [disabled]="overviewForm.invalid"-->
-              <button class="btn btn-primary btn-sm text-capitalize" >
+              <!-- [disabled]="overviewForm.invalid"-->
+              <button class="btn btn-primary btn-sm text-capitalize">
                 generate overview
               </button>
             </div>

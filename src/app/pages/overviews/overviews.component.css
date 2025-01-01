@@ -6,6 +6,10 @@
 .filter-card::-webkit-scrollbar {
   display: none;
 }
+.overview-box{
+ color: var(--text-muted);
+  font-size: 0.77rem;
+}
 .prompt-textarea,
 .prompt-textarea::placeholder,
 .card-section-title {
@@ -28,4 +32,8 @@
 .separator-with-word .separator-line {
   text-align: end;
   flex: 1;
+}
+.label-input {
+  color: var(--text-muted);
+  font-size: 0.77rem;
 }

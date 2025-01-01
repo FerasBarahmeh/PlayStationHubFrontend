@@ -5,6 +5,7 @@ import {map, Observable, throwError} from "rxjs";
 import {IResponse} from "../interfaces/responses/IResponse";
 import {IClub} from "../interfaces/clubs/IClub";
 import {catchError} from "rxjs/operators";
+import {IFeedbackClubRequest} from "../interfaces/requests/IFeedbackClubRequest";
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,15 @@ export class FeedbackClubService {
 
   public getSummary(feedbackClubId: number): Observable<IResponse<IClub>> {
     return this._http.post<IResponse<IClub>>(this.API_URL+'GenerateSummary', {'ID': feedbackClubId}, {withCredentials: true})
+      .pipe(
+        map(response=>{
+          return response;
+        }),
+      )
+  }
+
+  public getOverview(feedbackClubId: IFeedbackClubRequest): Observable<IResponse<any>> {
+    return this._http.post<IResponse<IClub>>(this.API_URL+'GenerateSummary', feedbackClubId, {withCredentials: true})
       .pipe(
         map(response=>{
           return response;
