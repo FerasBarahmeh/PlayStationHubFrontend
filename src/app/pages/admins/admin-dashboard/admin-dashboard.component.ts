@@ -1,10 +1,6 @@
 import {Component} from '@angular/core';
-import {AsideComponent} from '../../../components/aside/aside.component';
-import {faGears, faUsers, faWindowRestore, faShop, faLayerGroup, faEye} from "@fortawesome/free-solid-svg-icons"
-import {AsideItemComponent} from '../../../components/aside-item/aside-item.component';
-import {AsideGroupItemsComponent} from '../../../components/aside-gruop-item/aside-gruop-items.component';
 import {RouterModule} from '@angular/router';
-import {NgClass} from "@angular/common";
+import {AdminComponent} from "../../layouts/admin/admin.component";
 
 @Component({
   selector: 'admin-dashboard',
@@ -12,22 +8,9 @@ import {NgClass} from "@angular/common";
   styleUrls: ['./admin-dashboard.component.css'],
   standalone: true,
   imports: [
-    AsideComponent,
-    AsideItemComponent,
-    AsideGroupItemsComponent,
     RouterModule,
-    NgClass
+    AdminComponent
   ]
 })
 export class AdminDashboardComponent {
-
-  public iconDefinition: any = {
-    faWindowRestore,
-    faUsers,
-    faGears,
-    faShop,
-    faLayerGroup,
-    faEye,
-  }
-
 }
