@@ -1,9 +1,18 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
-import { NgClass } from "@angular/common";
-import { faAngleDoubleRight, faSearch, faWindowRestore, faUsers, faGears, faArrowLeft } from "@fortawesome/free-solid-svg-icons"
-import { FaIconComponent } from "@fortawesome/angular-fontawesome";
-import { AsideItemComponent } from '../aside-item/aside-item.component';
-import { RouterModule } from '@angular/router';
+import {Component, ElementRef, HostListener, Input, OnInit, ViewChild} from '@angular/core';
+import {NgClass} from "@angular/common";
+import {
+  faAngleDoubleRight,
+  faSearch,
+  faWindowRestore,
+  faUsers,
+  faGears,
+  faArrowLeft
+} from "@fortawesome/free-solid-svg-icons"
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {AsideItemComponent} from '../aside-item/aside-item.component';
+import {RouterModule} from '@angular/router';
+import {AuthService} from "../../services/auth.service";
+import {IUser} from "../../interfaces/user/IUser";
 
 @Component({
   selector: 'app-aside',
@@ -18,7 +27,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './aside.component.css'
 })
 
-export class AsideComponent {
+export class AsideComponent implements OnInit {
   public iconDefinition = {
     faAngleDoubleRight,
     faSearch,
@@ -26,6 +35,21 @@ export class AsideComponent {
     faUsers,
     faGears,
     faArrowLeft
+  }
+  public authorizedUser: IUser | null = null;
+
+  constructor(private _authService: AuthService) {
+  }
+
+  @Input({required:false})
+  public privilegeName!: string;
+
+  ngOnInit(): void {
+    if (this.authorizedUser == null) {
+      this._authService.authorizedUser().subscribe(authorizedUser => {
+        this.authorizedUser = authorizedUser.response;
+      });
+    }
   }
 
   public isOpen = false;
@@ -41,6 +65,7 @@ export class AsideComponent {
       this.asideSearchInput.nativeElement.focus();
     }
   }
+
   public openPopover(): void {
     this.isPopoverProfileOptionOpen = !this.isPopoverProfileOptionOpen
     console.log(this.isPopoverProfileOptionOpen)

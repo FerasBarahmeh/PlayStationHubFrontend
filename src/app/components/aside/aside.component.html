@@ -29,8 +29,8 @@
       <section class="profile-link" (click)="isPopoverProfileOptionOpen = !isPopoverProfileOptionOpen">
         <div><img class="avatar" src="assets/images/avatars/1.png" alt="avatar1"></div>
         <div class="info">
-          <div class="name">Feras barahmeh</div>
-          <div class="role">Admin</div>
+          <div class="name">{{ authorizedUser?.username }}</div>
+          <div class="role">{{ privilegeName }}</div>
         </div>
       </section>
 

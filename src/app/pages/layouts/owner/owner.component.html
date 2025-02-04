@@ -1,0 +1,33 @@
+<app-aside privilegeName="owner">
+  <aside-gruop-item groupName="controles" [isOpen]="true">
+    <aside-item [ngClass]="" routerLink="/owner/dashboard" #isDashboardRouterActive="routerLinkActive"
+                [isActive]="isDashboardRouterActive.isActive" routerLinkActive itemName="dashboard" class="mb-1"
+                [ItemIcom]="iconDefinition.faWindowRestore"/>
+    <aside-item [ngClass]="" routerLink="/home" #isHomeRouterActive="routerLinkActive"
+                [isActive]="isHomeRouterActive.isActive" routerLinkActive [itemName]="'Home'" class="mb-1"
+                [ItemIcom]="iconDefinition.faLayerGroup"/>
+  </aside-gruop-item>
+
+
+  <aside-gruop-item groupName="app" [separetorLine]="false" [isOpen]="true">
+    <aside-item routerLink="/admin/clubs"
+                itemName="my club"
+                #isClubsRouterActive="routerLinkActive"
+                [isActive]="isClubsRouterActive.isActive"
+                routerLinkActive
+                [ItemIcom]="iconDefinition.faShop"
+    />
+<!--    <aside-item routerLink="/admin/clubs/overviews"-->
+<!--                [itemName]="'Overviews'"-->
+<!--                #isOverviewsRouterActive="routerLinkActive"-->
+<!--                [isActive]="isOverviewsRouterActive.isActive"-->
+<!--                routerLinkActive-->
+<!--                [ItemIcom]="iconDefinition.faEye"-->
+<!--    />-->
+
+  </aside-gruop-item>
+</app-aside>
+
+<main class="page-content">
+  <ng-content></ng-content>
+</main>

@@ -89,6 +89,13 @@ export class LoginComponent implements OnInit {
     localStorage.removeItem('rememberMe');
   }
 
+  private _determinedStation() {
+    if (this._AuthService.isAdmin())
+      this._router.navigate(['admin/dashboard']);
+    else if (this._AuthService.isOwner())
+      this._router.navigate(['owner/dashboard']);
+  }
+
   public login() {
     const data: ILogin = <ILogin>this.loginForm.value;
     this.rememberMe ? this._setRememberMe() : this._unsetRememberMe();
@@ -98,7 +105,7 @@ export class LoginComponent implements OnInit {
         this.resetBackendErrors();
         if (res.statusCode == 200) {
           this._sharedService.changeMessage(res.message);
-          this._router.navigate(['admin/dashboard']);
+          this._determinedStation();
         }
       },
       error: (err) => {
