@@ -1,11 +1,11 @@
 import {Routes} from '@angular/router';
 import {HomeComponent} from "./pages/home/home.component";
+import {isAdminGuard} from "./guard/is.admin.guard";
 
 export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    // canActivate: [isAuthGuard, isNotAuthGuard],
   },
   // {
   //   path: 'club-details',
@@ -14,11 +14,12 @@ export const routes: Routes = [
   // },
   {
     path: 'auth',
-    loadChildren: () => import('../app/pages/auth/auth.routes').then(r => r.AUTH_ROUTES)
+    loadChildren: () => import('../app/pages/auth/auth.routes').then(r => r.AUTH_ROUTES),
   },
   {
     path: 'admin',
-    loadChildren: () => import('../app/pages/admins/admin.routes').then(r => r.ADMIN_ROUTES)
+    loadChildren: () => import('../app/pages/admins/admin.routes').then(r => r.ADMIN_ROUTES),
+    canActivate: [isAdminGuard],
   },
   {path: '', redirectTo: '/auth/login', pathMatch: 'full'},
   {path: '**', redirectTo: '/auth/notfound', pathMatch: 'full'},

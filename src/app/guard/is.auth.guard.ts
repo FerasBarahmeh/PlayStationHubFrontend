@@ -15,7 +15,6 @@ export const isAuthGuard: CanActivateFn = (route, state): Observable<boolean> =>
       const isDashboardPage = state.url === '/dashboard';
 
       if ((!isAuthenticated && isDashboardPage) || (!isAuthenticated && !isDashboardPage)) {
-        localStorage.setItem('isAuth', 'true');
         router.navigate(['/auth/login']);
         return false;
       }
