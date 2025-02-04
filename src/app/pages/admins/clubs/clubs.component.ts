@@ -9,7 +9,8 @@ import {IResponse} from "../../../interfaces/responses/IResponse";
 import {BreadcrumbComponent} from "../../../components/breadcrumb/breadcrumb.component";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faCheckCircle, faEllipsisVertical, faTrash, faInfo} from "@fortawesome/free-solid-svg-icons";
-import {RouterLink} from "@angular/router";
+import {RouterLink, RouterOutlet} from "@angular/router";
+import {AsideItemComponent} from "../../../components/aside-item/aside-item.component";
 
 @Component({
   selector: 'app-clubs',
@@ -19,7 +20,9 @@ import {RouterLink} from "@angular/router";
     AdminDashboardComponent,
     BreadcrumbComponent,
     FaIconComponent,
-    RouterLink
+    RouterLink,
+    AsideItemComponent,
+    RouterOutlet
   ],
   templateUrl: './clubs.component.html',
   styleUrl: './clubs.component.css'

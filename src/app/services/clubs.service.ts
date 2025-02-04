@@ -11,10 +11,20 @@ import {IResponse} from "../interfaces/responses/IResponse";
 export class ClubsService {
   private readonly API_URL = environment.API_URL + 'clubs/';
 
-  constructor(private _httpClient: HttpClient) { }
+  constructor(private _httpClient: HttpClient) {
+  }
 
   public clubs(): Observable<IResponse<IClub>> {
-    return this._httpClient.get<IResponse<IClub>>(this.API_URL, { withCredentials: true })
+    return this._httpClient.get<IResponse<IClub>>(this.API_URL, {withCredentials: true})
+      .pipe(
+        map(res => {
+          return res;
+        })
+      );
+  }
+
+  public find(id: number): Observable<IResponse<IClub>> {
+    return this._httpClient.post<IResponse<IClub>>(this.API_URL + 'Find', {"ID": id}, {withCredentials: true})
       .pipe(
         map(res => {
           return res;

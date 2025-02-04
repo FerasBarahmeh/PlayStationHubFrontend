@@ -1,7 +1,7 @@
 <admin-dashboard>
   <div class="container">
     <breadcrumb [breadcrumbs]="[
-    { label: 'Admin', url: '/dashboard' },
+    { label: 'Admin', url: 'admin/dashboard' },
     { label: 'Clubs' },
   ]"/>
   </div>
@@ -30,7 +30,7 @@
               <input class="form-check-input" type="checkbox"/>
             </th>
             <td>{{ club.id }}</td>
-            <td class="pointer" [routerLink]="['/admin/clubs/club']" [state]="{ club: club }">
+            <td class="pointer" [routerLink]="['/admin/clubs/', club.id]">
               {{ club.name }}
             </td>
             <td>

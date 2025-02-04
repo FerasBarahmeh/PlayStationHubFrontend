@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AppModule } from '../../../app.module';
-import { ILoginResponse } from '../../../interfaces/auth/ILoginResponce';
-import { ILoginAbstractControl } from '../../../interfaces/dataTransfareObjects/abstract-controler/users/ILoginAbstractControl';
-import { ILogin } from '../../../interfaces/dataTransfareObjects/users/ILogin';
-import { AuthService } from '../../../services/auth.service';
-import { SharedService } from '../../../services/shared.service';
-import { hasSpace } from '../../../validators/HasSpaceValidator';
+import {Router} from '@angular/router';
+import {AppModule} from '../../../app.module';
+import {ILoginResponse} from '../../../interfaces/auth/ILoginResponce';
+import {
+  ILoginAbstractControl
+} from '../../../interfaces/dataTransfareObjects/abstract-controler/users/ILoginAbstractControl';
+import {ILogin} from '../../../interfaces/dataTransfareObjects/users/ILogin';
+import {AuthService} from '../../../services/auth.service';
+import {SharedService} from '../../../services/shared.service';
+import {hasSpace} from '../../../validators/HasSpaceValidator';
 
 @Component({
   selector: 'app-login',
@@ -41,7 +43,8 @@ export class LoginComponent implements OnInit {
     private _AuthService: AuthService,
     private _sharedService: SharedService,
     private _router: Router
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
@@ -63,7 +66,7 @@ export class LoginComponent implements OnInit {
           Validators.minLength(6),
         ]),
       },
-      { validators: hasSpace('username') }
+      {validators: hasSpace('username')}
     );
   }
 
@@ -79,7 +82,7 @@ export class LoginComponent implements OnInit {
   private _setRememberMe() {
     let username = this.loginForm.get('username')?.value;
     let password = this.loginForm.get('password')?.value;
-    localStorage.setItem('rememberMe', JSON.stringify({ username, password }));
+    localStorage.setItem('rememberMe', JSON.stringify({username, password}));
   }
 
   private _unsetRememberMe() {
@@ -95,7 +98,7 @@ export class LoginComponent implements OnInit {
         this.resetBackendErrors();
         if (res.statusCode == 200) {
           this._sharedService.changeMessage(res.message);
-          this._router.navigate(['/dashboard']);
+          this._router.navigate(['admin/dashboard']);
         }
       },
       error: (err) => {
