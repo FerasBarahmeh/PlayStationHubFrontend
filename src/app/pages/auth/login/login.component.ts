@@ -15,6 +15,8 @@ import {ILogin} from '../../../interfaces/dataTransfareObjects/users/ILogin';
 import {AuthService} from '../../../services/auth.service';
 import {SharedService} from '../../../services/shared.service';
 import {hasSpace} from '../../../validators/HasSpaceValidator';
+import {map, take} from "rxjs/operators";
+import {combineLatest} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -40,7 +42,7 @@ export class LoginComponent implements OnInit {
   public apparentPassword: boolean = false;
 
   constructor(
-    private _AuthService: AuthService,
+    private _authService: AuthService,
     private _sharedService: SharedService,
     private _router: Router
   ) {
@@ -90,17 +92,34 @@ export class LoginComponent implements OnInit {
   }
 
   private _determinedStation() {
-    if (this._AuthService.isAdmin())
-      this._router.navigate(['admin/dashboard']);
-    else if (this._AuthService.isOwner())
-      this._router.navigate(['owner/dashboard']);
+    let isAdmin: boolean;
+    let isOwner: boolean;
+
+    combineLatest([
+      this._authService.isAdmin(),
+      this._authService.isOwner()
+    ]).pipe(take(1)).subscribe(([isAdminResponse, isOwnerResponse]) => {
+      isAdmin = isAdminResponse.response;
+      isOwner = isOwnerResponse.response;
+
+      if (isAdmin) {
+        this._router.navigateByUrl('admin/dashboard')
+          .then(r => console.log("To Admin Dashboard! ", r));
+      } else if (isOwner) {
+        this._router.navigateByUrl('owner/dashboard')
+          .then(r => console.log("To Owner Dashboard! ", r));
+      } else {
+        this._router.navigateByUrl('/home')
+          .then(r => console.log("To default route! ", r));
+      }
+    });
   }
 
   public login() {
     const data: ILogin = <ILogin>this.loginForm.value;
     this.rememberMe ? this._setRememberMe() : this._unsetRememberMe();
 
-    return this._AuthService.login(data).subscribe({
+    return this._authService.login(data).subscribe({
       next: (res: ILoginResponse) => {
         this.resetBackendErrors();
         if (res.statusCode == 200) {

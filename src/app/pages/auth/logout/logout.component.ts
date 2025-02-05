@@ -8,15 +8,15 @@ import { Router } from '@angular/router';
   standalone: true,
 })
 export class LogoutComponent implements OnInit{
-  constructor(private _AuthServie: AuthService, private _Router: Router) { }
+  constructor(private _authService: AuthService, private _Router: Router) { }
 
   ngOnInit(): void {
     this.logout();
   }
 
   public logout() {
-    return this._AuthServie.logout().subscribe(res => {
-      this._Router.navigate(['/auth/login']);
+    return this._authService.logout().subscribe(res => {
+      this._Router.navigateByUrl('/home').then(r=>r);
       console.log("You are logging out")
     })
   }
