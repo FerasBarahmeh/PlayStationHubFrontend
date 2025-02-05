@@ -46,8 +46,9 @@ export class AsideComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.authorizedUser == null) {
-      this._authService.authorizedUser().subscribe(authorizedUser => {
-        this.authorizedUser = authorizedUser.response;
+      this._authService.authorizedUser().subscribe(res => {
+        this.authorizedUser = res.response.authenticatedUser;
+        this.privilegeName = res.response.privileges.map((role : any)=> role.name).at(-1);
       });
     }
   }
