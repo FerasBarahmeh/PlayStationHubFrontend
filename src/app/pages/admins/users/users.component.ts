@@ -10,6 +10,7 @@ import {BusyService} from '../../../services/busy.service';
 import {FilterTableComponent} from '../../../components/filter-table/filter-table.component';
 import {ISearchTable} from '../../../interfaces/events/ISearchTable';
 import {BreadcrumbComponent} from "../../../components/breadcrumb/breadcrumb.component";
+import {AdminComponent} from "../../layouts/admin/admin.component";
 
 @Component({
   selector: 'app-users',
@@ -21,10 +22,11 @@ import {BreadcrumbComponent} from "../../../components/breadcrumb/breadcrumb.com
     FaIconComponent,
     PaginationNavComponent,
     FilterTableComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    AdminComponent
   ]
 })
-export class UsersComponent implements OnInit, AfterViewInit {
+export class UsersComponent implements OnInit {
 
   public icons = {
     faAngleDown,
@@ -34,28 +36,22 @@ export class UsersComponent implements OnInit, AfterViewInit {
     faTrash,
   }
 
-  constructor(private _userService: UserService, private cdr: ChangeDetectorRef, private spinner: BusyService) { }
+  constructor(private _userService: UserService, private cdr: ChangeDetectorRef) { }
 
   public users: IUser[] = [];
 
   public totalCount!: number;
 
   ngOnInit() {
-    this.spinner.busy();
     this._userService.count().subscribe((res) => { this.totalCount = res.response; this.cdr.detectChanges() });
     this.loadUsers();
   }
 
-  ngAfterViewInit(): void {
-    this.spinner.idle();
-  }
   private loadUsers(slideNumber: number = 1, slideSize: number = Number(localStorage.getItem('slideSize')??5)) {
-    this.spinner.busy();
     this._userService.users(slideNumber, slideSize).subscribe((res: IPagedResponse<IUser>) => {
       this.users = res.data;
       this.totalCount = Number(res.totalCount);
     });
-    this.spinner.idle();
   }
 
   onSlideChange(event: any): void {

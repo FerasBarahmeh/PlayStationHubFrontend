@@ -1,35 +1,31 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FilterTableComponent} from "../../../components/filter-table/filter-table.component";
 import {ISearchTable} from '../../../interfaces/events/ISearchTable';
 import {IClub} from "../../../interfaces/clubs/IClub";
-import {AdminDashboardComponent} from "../admin-dashboard/admin-dashboard.component";
 import {ClubsService} from "../../../services/clubs.service";
-import {BusyService} from "../../../services/busy.service";
 import {IResponse} from "../../../interfaces/responses/IResponse";
 import {BreadcrumbComponent} from "../../../components/breadcrumb/breadcrumb.component";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
-import {faCheckCircle, faEllipsisVertical, faTrash, faInfo} from "@fortawesome/free-solid-svg-icons";
-import {RouterLink, RouterOutlet} from "@angular/router";
-import {AsideItemComponent} from "../../../components/aside-item/aside-item.component";
+import {faCheckCircle, faEllipsisVertical, faInfo, faTrash} from "@fortawesome/free-solid-svg-icons";
+import {RouterLink} from "@angular/router";
+import {AdminComponent} from "../../layouts/admin/admin.component";
 
 @Component({
   selector: 'app-clubs',
   standalone: true,
   imports: [
     FilterTableComponent,
-    AdminDashboardComponent,
     BreadcrumbComponent,
     FaIconComponent,
     RouterLink,
-    AsideItemComponent,
-    RouterOutlet
+    AdminComponent
   ],
   templateUrl: './clubs.component.html',
   styleUrl: './clubs.component.css'
 })
-export class ClubsComponent implements OnInit, AfterViewInit {
+export class ClubsComponent implements OnInit {
 
-  public clubs!:IClub[];
+  public clubs!: IClub[];
 
   public icons = {
     faEllipsisVertical,
@@ -39,19 +35,14 @@ export class ClubsComponent implements OnInit, AfterViewInit {
   }
 
 
-  constructor(private _clubsService:ClubsService, private spinner: BusyService) {
-    this.spinner.busy();
+  constructor(private _clubsService: ClubsService) {
   }
 
-  ngAfterViewInit(): void {
-    this.spinner.idle();
-  }
 
   ngOnInit() {
     this._clubsService.clubs().subscribe((res: IResponse<IClub>) => {
       this.clubs = res.response;
     });
-
   }
 
   onSearchStart($event: ISearchTable) {

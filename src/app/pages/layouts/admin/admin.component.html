@@ -2,34 +2,33 @@
   <aside-gruop-item groupName="controles" [isOpen]="true">
     <aside-item [ngClass]="" routerLink="/admin/dashboard" #isDashboardRouterActive="routerLinkActive"
                 [isActive]="isDashboardRouterActive.isActive" routerLinkActive itemName="dashboard" class="mb-1"
-                [ItemIcom]="iconDefinition.faWindowRestore"/>
+                [ItemIcon]="iconDefinition.faWindowRestore"/>
     <aside-item [ngClass]="" routerLink="/home" #isHomeRouterActive="routerLinkActive"
                 [isActive]="isHomeRouterActive.isActive" routerLinkActive [itemName]="'Home'" class="mb-1"
-                [ItemIcom]="iconDefinition.faLayerGroup"/>
+                [ItemIcon]="iconDefinition.faLayerGroup"/>
   </aside-gruop-item>
 
   <aside-gruop-item groupName="users" [isOpen]="true">
     <aside-item routerLink="/admin/users" #isUsersRouterActive="routerLinkActive"
                 [isActive]="isUsersRouterActive.isActive" routerLinkActive [itemName]="'Users'"
-                [ItemIcom]="iconDefinition.faUsers"/>
+                [ItemIcon]="iconDefinition.faUsers"/>
   </aside-gruop-item>
 
   <aside-gruop-item groupName="app" [separetorLine]="false" [isOpen]="true">
     <aside-item routerLink="/admin/clubs"
-                [itemName]="'clubs'"
+                itemName="clubs"
                 #isClubsRouterActive="routerLinkActive"
                 [isActive]="isClubsRouterActive.isActive"
                 routerLinkActive
-                [ItemIcom]="iconDefinition.faShop"
+                [ItemIcon]="iconDefinition.faShop"
     />
     <aside-item routerLink="/admin/clubs/overviews"
-                [itemName]="'Overviews'"
+                [itemName]="'overviews'"
                 #isOverviewsRouterActive="routerLinkActive"
                 [isActive]="isOverviewsRouterActive.isActive"
                 routerLinkActive
-                [ItemIcom]="iconDefinition.faEye"
+                [ItemIcon]="iconDefinition.faEye"
     />
-
   </aside-gruop-item>
 </app-aside>
 

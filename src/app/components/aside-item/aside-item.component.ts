@@ -14,6 +14,6 @@ import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 })
 export class AsideItemComponent {
     @Input({ required: true }) itemName!: string;
-    @Input() ItemIcom?: any;
+    @Input() ItemIcon?: any;
     @Input() isActive: boolean = false;
 }

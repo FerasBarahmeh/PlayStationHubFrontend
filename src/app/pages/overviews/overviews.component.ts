@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {AdminDashboardComponent} from "../admins/admin-dashboard/admin-dashboard.component";
 import {BreadcrumbComponent} from "../../components/breadcrumb/breadcrumb.component";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faLightbulb as faLed, faScroll} from "@fortawesome/free-solid-svg-icons";
@@ -8,17 +7,17 @@ import {ClubsService} from "../../services/clubs.service";
 import {IResponse} from "../../interfaces/responses/IResponse";
 import {AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {FeedbackClubService} from "../../services/feedback-club.service";
-import {BusyService} from "../../services/busy.service";
 import {ActivatedRoute} from "@angular/router";
+import {AdminComponent} from "../layouts/admin/admin.component";
 
 @Component({
   selector: 'app-overviews',
   standalone: true,
   imports: [
-    AdminDashboardComponent,
     BreadcrumbComponent,
     FaIconComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AdminComponent
   ],
   templateUrl: './overviews.component.html',
   styleUrl: './overviews.component.css'
@@ -40,7 +39,7 @@ export class OverviewsComponent implements OnInit {
 
   public id: number | null = null;
 
-  constructor(public clubsService: ClubsService, private fb: FormBuilder, private _feedbackClubService: FeedbackClubService, private _loader: BusyService, private _route: ActivatedRoute) {
+  constructor(public clubsService: ClubsService, private fb: FormBuilder, private _feedbackClubService: FeedbackClubService, private _route: ActivatedRoute) {
     clubsService.clubs().subscribe((res: IResponse<IClub>) => {
       this.clubs = res.response;
     });
@@ -62,7 +61,7 @@ export class OverviewsComponent implements OnInit {
       if (params.has('id')) {
         const idParam = params.get('id');
         this.id = idParam ? Number(idParam) : null;
-        this.overviewForm.patchValue({id:  this.id})
+        this.overviewForm.patchValue({id: this.id})
         this.generateOverview();
       }
     });
@@ -71,12 +70,10 @@ export class OverviewsComponent implements OnInit {
   public generateOverview() {
     this.submitted = true;
     if (this.overviewForm.invalid) return;
-    this._loader.busy();
     localStorage.setItem('prompt', this.overviewForm.value.prompt);
     this._feedbackClubService.getOverview(this.overviewForm.value).subscribe({
       next: (result) => {
         this.overview = result.response;
-        this._loader.idle();
       }
     });
 
