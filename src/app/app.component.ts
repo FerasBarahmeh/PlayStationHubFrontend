@@ -10,7 +10,7 @@ import {LoadingComponent} from "./components/loading/loading.component";
   standalone: true,
   imports: [RouterOutlet, SharedModule, NgxSpinnerModule, LoadingComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
 

@@ -1,0 +1,30 @@
+<tr class="text-light text-center" [ngClass]="{'bg-dark': isOdd}" >
+  <td>{{ club.id }}</td>
+  <td class="pointer" [routerLink]="['/admin/clubs/', club.id]">
+    {{ club.name }}
+  </td>
+  <td>
+    {{ club.location }}
+  </td>
+  <td class="text-end">
+    <div class="dropdown">
+      <button class="bg-transparent border-0 text-center text-info mx-1 pointer" id="dropdownMenuOptions"
+              data-bs-toggle="dropdown" aria-expanded="false">
+        options
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuOptions">
+        <li class="dropdown-item d-flex align-items-center pointer gap-3"
+        >
+          <fa-icon [icon]="icons.faInfo" class="text-info mx-1 pointer"/>
+          Summary
+        </li>
+
+        <li class="dropdown-item d-flex align-items-center pointer gap-3">
+          <fa-icon [icon]="icons.faTrash" class="text-danger mx-1 pointer"/>
+          <span>Delete</span>
+        </li>
+      </ul>
+    </div>
+  </td>
+
+</tr>

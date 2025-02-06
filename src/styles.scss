@@ -1,3 +1,26 @@
+$primary:  #00B7AB;
+$secondary: #C0F3F4;
+$body-bg: #151515;
+$body-color: #ffffff;
+$border-color: #C0F3F4;
+
+$btn-primary-bg: #00B7AB;
+$btn-primary-color: #ffffff;
+$btn-primary-hover-bg: #019588;
+
+$form-control-bg: #2A2A2A;
+$form-control-color: #ffffff;
+$form-control-border-color: #404040;
+$form-control-placeholder-color: #A3A3A3;
+
+$form-select-color: $primary;
+
+$bs-pagination-hover-bg: var(--color-dark);
+$bs-pagination-disabled-bg: transparent ;
+
+$bs-dropdown-link-hover-bg: var(--color-dark);
+
+
 :root {
   --color-primary-light: #F5FE7F;
   --color-primary: #00B7AB;
@@ -25,6 +48,12 @@
   --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.2);
   --shadow-primary-light:  var(--shadow-primary-light);
 }
+// Start Angular Configuration
+:host {
+  display: contents;
+}
+// End Angular Configuration
+
 /*Start General*/
 body {
   min-height: 100vh;
@@ -97,3 +126,11 @@ input[type="checkbox"] {
 .section-title p {
   margin-bottom: 0;
 }
+
+// Start Text
+.txt-gradient-primary {
+  background: linear-gradient(180deg, var(--color-primary), white);
+  color: transparent;
+  background-clip: text;
+}
+// End Text

@@ -5,19 +5,17 @@
     { label: 'Clubs' },
   ]"/>
   </div>
-  <div class="container mt-5 p-2 bg-dark">
+
+  <div class="container shadow-lg rounded   bg-dark">
     <filter-table
       (searchStarted)="onSearchStart($event)"
       [filterableColumns]="['ID', 'Name']"
     />
     <table class="table table-responsive table-borderless">
-      <thead>
+      <thead class="border-bottom">
       <tr class="bg-dark">
-        <th scope="col">
-          <input class="form-check-input" type="checkbox"/>
-        </th>
         <th scope="col">#</th>
-        <th scope="col">Name</th>
+        <th scope="col" >Name</th>
         <th scope="col">Location</th>
         <th scope="col">options</th>
       </tr>
@@ -25,35 +23,7 @@
 
       <tbody class="bg-dark text-light shadow-lg">
         @for (club of clubs; track $index) {
-          <tr class="text-light">
-            <th scope="row">
-              <input class="form-check-input" type="checkbox"/>
-            </th>
-            <td>{{ club.id }}</td>
-            <td class="pointer" [routerLink]="['/admin/clubs/', club.id]">
-              {{ club.name }}
-            </td>
-            <td>
-              {{ club.location }}
-            </td>
-            <td class="text-end">
-              <div class="dropdown">
-                <fa-icon [icon]="icons.faEllipsisVertical" class="text-info mx-1 pointer" id="dropdownMenuOptions" data-bs-toggle="dropdown" aria-expanded="false"/>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuOptions">
-                  <li class="dropdown-item d-flex align-items-center pointer gap-3"
-                  >
-                    <fa-icon [icon]="icons.faInfo" class="text-info mx-1 pointer"/>
-                    Summary
-                  </li>
-
-                  <li class="dropdown-item d-flex align-items-center pointer gap-3">
-                    <fa-icon [icon]="icons.faTrash" class="text-danger mx-1 pointer"/>
-                    <span>Delete</span>
-                  </li>
-                </ul>
-              </div>
-            </td>
-          </tr>
+          <app-club-row [isOdd]="$odd" [club]="club"/>
         }
       </tbody>
     </table>

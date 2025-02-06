@@ -2,10 +2,10 @@
   <div class="switcher" (click)="isOpen = ! isOpen">
     <fa-icon [icon]="iconDefinition.faAngleDoubleRight" [ngClass]="{'rotate-180' : isOpen} "></fa-icon>
   </div>
-  <header class="d-flex content-header">PlayStation Hub</header>
+  <header class="logo text-center content-header txt-gradient-primary display-1">PlayStation Hub</header>
   <main class="position-relative">
     <section class="search-container">
-      <div class="input-group mb-3">
+      <div class="mb-3 input-group">
         <fa-icon [icon]="iconDefinition.faSearch" class="search-icon"></fa-icon>
         <input #asideSearchInput type="text" class="form-control search-input" placeholder="Search">
         <button class="btn shortcut-btn">Ctrl + K</button>

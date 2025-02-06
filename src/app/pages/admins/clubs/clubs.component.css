@@ -4,8 +4,3 @@ thead {
 th, tr, td {
   color: var(--text-light);
 }
-
-
-.green{
-  color:green;
-}
