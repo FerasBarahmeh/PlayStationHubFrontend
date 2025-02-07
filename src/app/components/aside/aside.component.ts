@@ -1,12 +1,13 @@
 import {Component, ElementRef, HostListener, Input, OnInit, ViewChild} from '@angular/core';
 import {NgClass} from "@angular/common";
 import {
+  faRightFromBracket,
   faAngleDoubleRight,
   faSearch,
   faWindowRestore,
   faUsers,
   faGears,
-  faArrowLeft
+  faArrowLeft, faBurger, faMinus, faBars, faBarsStaggered
 } from "@fortawesome/free-solid-svg-icons"
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {AsideItemComponent} from '../aside-item/aside-item.component';
@@ -29,6 +30,8 @@ import {IUser} from "../../interfaces/user/IUser";
 
 export class AsideComponent implements OnInit {
   public iconDefinition = {
+
+    faRightFromBracket,
     faAngleDoubleRight,
     faSearch,
     faWindowRestore,
@@ -36,6 +39,9 @@ export class AsideComponent implements OnInit {
     faGears,
     faArrowLeft
   }
+  protected readonly faBars = faBars;
+  protected readonly faBarsStaggered = faBarsStaggered;
+
   public authorizedUser: IUser | null = null;
 
   constructor(private _authService: AuthService) {
@@ -53,8 +59,7 @@ export class AsideComponent implements OnInit {
     }
   }
 
-  public isOpen = false;
-  public isPopoverProfileOptionOpen: boolean = false;
+  public isOpen = true;
 
   @ViewChild('asideSearchInput') asideSearchInput !: ElementRef;
 
@@ -63,12 +68,9 @@ export class AsideComponent implements OnInit {
   public handleKeyDown(event: KeyboardEvent) {
     if (event.ctrlKey && event.key === 'k') {
       event.preventDefault();
+      this.isOpen = true;
       this.asideSearchInput.nativeElement.focus();
     }
   }
 
-  public openPopover(): void {
-    this.isPopoverProfileOptionOpen = !this.isPopoverProfileOptionOpen
-    console.log(this.isPopoverProfileOptionOpen)
-  }
 }
