@@ -22,7 +22,6 @@ $bs-dropdown-link-hover-bg: var(--color-dark);
 
 
 :root {
-
   --color-primary-light: #F5FE7F;
   --color-primary: #00B7AB;
   --color-dark: #151515;
@@ -57,9 +56,7 @@ $bs-dropdown-link-hover-bg: var(--color-dark);
 
 }
 // Start Angular Configuration
-:host {
-  display: contents;
-}
+
 // End Angular Configuration
 
 /*Start General*/
@@ -86,6 +83,15 @@ li {
 }
 input[type="checkbox"] {
   cursor: pointer;
+}
+
+::-webkit-scrollbar,
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-track {
+  display: none;
+}
+td{
+  color: var(--text-light);
 }
 /*End General*/
 

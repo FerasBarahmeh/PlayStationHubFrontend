@@ -1,0 +1,42 @@
+<tr [ngClass]="{'bg-dark': !isOdd}">
+  <td>{{ user.id }}</td>
+  <td>
+    <img src="https://i.imgur.com/VKOeFyS.png" width="25"/>
+
+    <span class="{{user.statusName == status.Active ? 'text-success':'text-danger'}}">{{ user.username }}</span>
+  </td>
+
+  <td>
+    <a href="mailto:{{ user.email }}">{{ user.email }}</a>
+  </td>
+
+  <td class="text-end">
+    <div class="dropdown">
+      <fa-icon [icon]="icons.faEllipsisVertical" class="text-info me-2 pointer" id="dropdownMenuOptions" data-bs-toggle="dropdown" aria-expanded="false"/>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuOptions">
+        <li class="dropdown-item pointer">
+          <fa-icon [icon]="icons.faInfo" class="fa-sm text-info me-2 pointer"/>
+          <span>More Info</span>
+        </li>
+        <li class="dropdown-item pointer">
+          <fa-icon [icon]="icons.faCheckCircle" class="fa-sm text-warning me-2 pointer"/>
+          <span>status</span>
+        </li>
+        <li class="separator-line"></li>
+        <li class="dropdown-item pointer">
+          <fa-icon [icon]="icons.faHome" class="fa-sm text-info me-2 pointer"/>
+          <span>clubs</span>
+        </li>
+        <li class="dropdown-item pointer">
+          <fa-icon [icon]="icons.faPlusCircle" class="fa-sm text-success me-2 pointer"/>
+          <span>New Club</span>
+        </li>
+        <li class="separator-line"></li>
+        <li class="dropdown-item pointer">
+          <fa-icon [icon]="icons.faTrash" class="fa-sm text-danger me-2 pointer"/>
+          <span>Delete</span>
+        </li>
+      </ul>
+    </div>
+  </td>
+</tr>

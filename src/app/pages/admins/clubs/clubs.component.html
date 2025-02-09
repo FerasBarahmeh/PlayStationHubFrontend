@@ -1,32 +1,30 @@
 <app-admin-layout>
-  <div class="container">
-    <breadcrumb [breadcrumbs]="[
-    { label: 'Admin', url: 'admin/dashboard' },
-    { label: 'Clubs' },
-  ]"/>
+  <div class="container mt-3">
+    <breadcrumb [breadcrumbs]="[{ label: 'Admin', url: 'admin/dashboard' },{ label: 'Clubs' },]"/>
   </div>
 
-  <div class="container shadow-lg rounded   bg-dark">
+
+  <div class="container px-4 pt-4 shadow-lg rounded bg-dark">
     <filter-table
       (searchStarted)="onSearchStart($event)"
       [filterableColumns]="['ID', 'Name']"
     />
-    <table class="table table-responsive table-borderless">
-      <thead class="border-bottom">
-      <tr class="bg-dark">
-        <th scope="col">#</th>
-        <th scope="col" >Name</th>
-        <th scope="col">Location</th>
-        <th scope="col">options</th>
-      </tr>
-      </thead>
-
-      <tbody class="bg-dark text-light shadow-lg">
-        @for (club of clubs; track $index) {
-          <app-club-row [isOdd]="$odd" [club]="club"/>
-        }
-      </tbody>
-    </table>
-
+    <div class="table-responsive rounded"  style="min-height: 170px">
+      <table class="table">
+        <thead class="border-bottom">
+        <tr class="bg-dark text-center">
+          <th scope="col" class="text-light">#</th>
+          <th scope="col" class="text-light" >Name</th>
+          <th scope="col" class="text-light">Location</th>
+          <th scope="col" class="text-light text-end text-capitalize text-primary">options</th>
+        </tr>
+        </thead>
+        <tbody class="bg-dark text-light shadow-lg">
+          @for (club of clubs; track $index) {
+            <app-club-row [isOdd]="$odd" [club]="club"/>
+          }
+        </tbody>
+      </table>
+    </div>
   </div>
 </app-admin-layout>

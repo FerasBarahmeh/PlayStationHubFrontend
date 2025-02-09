@@ -11,6 +11,7 @@ import {FilterTableComponent} from '../../../components/filter-table/filter-tabl
 import {ISearchTable} from '../../../interfaces/events/ISearchTable';
 import {BreadcrumbComponent} from "../../../components/breadcrumb/breadcrumb.component";
 import {AdminComponent} from "../../layouts/admin/admin.component";
+import {UserRowComponent} from "../user-row/user-row.component";
 
 @Component({
   selector: 'app-users',
@@ -23,7 +24,8 @@ import {AdminComponent} from "../../layouts/admin/admin.component";
     PaginationNavComponent,
     FilterTableComponent,
     BreadcrumbComponent,
-    AdminComponent
+    AdminComponent,
+    UserRowComponent
   ]
 })
 export class UsersComponent implements OnInit {

@@ -1,4 +1,4 @@
-<tr class="text-light text-center" [ngClass]="{'bg-dark': isOdd}" >
+<tr class="text-light text-center" [ngClass]="{'bg-dark': !isOdd}" >
   <td>{{ club.id }}</td>
   <td class="pointer" [routerLink]="['/admin/clubs/', club.id]">
     {{ club.name }}
@@ -8,15 +8,18 @@
   </td>
   <td class="text-end">
     <div class="dropdown">
-      <button class="bg-transparent border-0 text-center text-info mx-1 pointer" id="dropdownMenuOptions"
-              data-bs-toggle="dropdown" aria-expanded="false">
-        options
-      </button>
+      <fa-icon
+        [icon]="icons.faEllipsisVertical"
+        class="text-info mx-1 pointer"
+        id="dropdownMenuOptions"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+      </fa-icon>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuOptions">
-        <li class="dropdown-item d-flex align-items-center pointer gap-3"
-        >
+        <li class="dropdown-item d-flex align-items-center pointer gap-3">
           <fa-icon [icon]="icons.faInfo" class="text-info mx-1 pointer"/>
-          Summary
+          <span>Summary</span>
         </li>
 
         <li class="dropdown-item d-flex align-items-center pointer gap-3">

@@ -31,7 +31,7 @@ export class AsideComponent implements OnInit {
   constructor(private _authService: AuthService) {
   }
 
-  @Input({required: false})
+  @Input({required: true})
   public privilegeName!: string;
 
   @Input()
