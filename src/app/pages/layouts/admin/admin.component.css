@@ -1,0 +1,12 @@
+main {
+  transition: margin-left 0.3s ease-in-out;
+  padding: 30px;
+}
+
+main.opened-aside {
+  margin-left: var(--opened-aside-width);
+}
+
+main.closed-aside {
+  margin-left: var(--closed-aside-width);
+}

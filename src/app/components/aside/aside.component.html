@@ -3,28 +3,22 @@
 
     @if (isOpen) {
       <div class="logo_name">Hup</div>
-      <fa-icon class="bars-staggered-btn" (click)="isOpen=!isOpen" [icon]="faBarsStaggered"></fa-icon>
+      <fa-icon class="bars-staggered-btn" (click)="toggleAside()" [icon]="iconDefinition.faBarsStaggered"></fa-icon>
     }
     @if (!isOpen) {
-      <fa-icon class="bars-btn" (click)="isOpen = !isOpen" [icon]="faBars"></fa-icon>
+      <fa-icon class="bars-btn" (click)="toggleAside()" [icon]="iconDefinition.faBars"></fa-icon>
     }
   </header>
   <ul class="items">
-    <li class="active">
-      <div class="mb-3 search-container" data-bs-toggle="tooltip" data-bs-placement="top" title="search">
-        <fa-icon (click)="isOpen=!isOpen" [icon]="iconDefinition.faSearch" class="search-icon"></fa-icon>
+    <li class="search">
+      <div class="search-container">
+        <fa-icon (click)="toggleAside()" [icon]="iconDefinition.faSearch" class="search-icon"></fa-icon>
         <input #asideSearchInput type="text" class="form-control search-input" placeholder="Search (Ctrl + K)">
-        <span class="tooltip">search</span>
+        <span class="tooltip">search (Ctrl + k)</span>
       </div>
     </li>
 
-    <li class="item active">
-      <div class="content">
-        <fa-icon class="icon-indicator" [icon]="iconDefinition.faWindowRestore"></fa-icon>
-        <span class="links_name">dashboard</span>
-      </div>
-      <span class="tooltip">dashboard</span>
-    </li>
+    <ng-content></ng-content>
 
     <li class="profile">
       <div class="profile-details">

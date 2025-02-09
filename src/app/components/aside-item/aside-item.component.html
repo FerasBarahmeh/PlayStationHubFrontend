@@ -1,7 +1,7 @@
-<li [ngClass]="{'active': isActive}">
-  @if(ItemIcon != 'undefined')
-  {
-  <fa-icon [icon]="ItemIcon" class="fa-lg"></fa-icon>
-  }
-  <span class="item-name">{{ itemName}}</span>
+<li class="item" [ngClass]="{'active': isActive}">
+  <div class="content">
+    <fa-icon class="icon-indicator" [icon]="itemIcon"></fa-icon>
+    <span class="links_name">{{ itemName }}</span>
+  </div>
+  <span class="tooltip">{{ itemName }}</span>
 </li>

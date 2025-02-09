@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 
 @Component({
-    selector: 'aside-item',
+    selector: 'app-aside-item',
     templateUrl: './aside-item.component.html',
     styleUrls: ['./aside-item.component.css'],
     standalone: true,
@@ -13,7 +13,10 @@ import { FaIconComponent } from "@fortawesome/angular-fontawesome";
     ]
 })
 export class AsideItemComponent {
-    @Input({ required: true }) itemName!: string;
-    @Input() ItemIcon?: any;
-    @Input() isActive: boolean = false;
+    @Input({ required: true })
+    itemName!: string;
+    @Input({required: false})
+    itemIcon: any;
+    @Input()
+    isActive: boolean = false;
 }

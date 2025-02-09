@@ -1,35 +1,22 @@
-:root {
-  --aside-padding-horizontal: 14px;
-  --aside-padding-vartiucal: 6px;
+aside li {
+  position: relative;
+  margin: 8px 8px 8px 0;
+  list-style: none;
+  cursor: pointer;
 }
-:host {
-  display: contents;
-}
-
-/* Start General */
-aside .icon {
-  color: var(--bs-primary) !important;
-  height: 60px;
-  min-width: 50px;
-  font-size: 28px;
-  text-align: center;
-  line-height: 60px; /* Centers icon vertically */
-}
-/* End General */
-
 aside {
   position: fixed;
   left: 0;
   top: 0;
   height: 100%;
-  width: 80px;
+  width: var(--closed-aside-width);
   background-color: var(--card-bg);
   padding: 6px 14px;
   z-index: 99;
   transition: all 0.5s ease;
 }
 aside.opened {
-  width: 250px;
+  width: var(--opened-aside-width);
 }
 header.logo-details {
   font-size: 28px;
@@ -68,20 +55,23 @@ header.logo-details .bars-btn {
 .nav-list {
   height: calc(100% - 64px);
   overflow-y: scroll;
+  overflow-x: auto;
 }
-aside .nav-list::-webkit-scrollbar {
-  width: 0;
-  border-radius: 5px;
-}
+aside .nav-list::-webkit-scrollbar,
 aside .nav-list::-webkit-scrollbar-thumb,
 aside .nav-list::-webkit-scrollbar-track {
   display: none;
 }
-.items:first-child  {
+aside .search {
   position: relative;
+  border-radius: 10px;
+}
+aside.closed li.search {
+  background-color:  var(--input-bg);
 }
 .search-container {
   position: relative;
+  margin-bottom: 16px;
 }
 .search-icon {
   position: absolute;
@@ -118,50 +108,11 @@ aside.opened .search-input {
   background: var(--input-bg);
 }
 
-/*Start Item*/
-aside li {
-  position: relative;
-  margin: 8px 8px 8px 0;
-  list-style: none;
-  cursor: pointer;
-}
-aside.closed li.active,
-aside .item.active {
-  background-color:  var(--color-dark);
-  border-radius: 10px;
-}
-aside .item {
-  padding: 10px;
-  transition: background-color 0.2s ease-in-out;
-  border-radius: 3px;
-}
-aside .item:hover {
-  background-color: var(--input-bg);
-}
-aside .links_name {
-  display: none;
-  text-transform: capitalize;
-}
-aside.opened .links_name {
-  display: block;
-}
-aside li .content {
-  position: relative;
-  display: flex;
-  gap: 16px;
-  cursor: pointer;
-  align-items: center;
-}
-aside.closed li .content {
-  justify-content: center;
-}
-aside li .content .icon-indicator {
-  color: var(--color-primary);
-  font-size: 18px;
-}
-
+/*Start tooltip*/
 aside li .tooltip {
   position: absolute;
+  min-width: fit-content;
+  white-space: nowrap;
   top: -20px;
   left: calc(100% + 15px);
   z-index: 3;
@@ -187,7 +138,7 @@ aside li:hover .tooltip {
   top: 50%;
   transform: translateY(-50%);
 }
-/*End Item*/
+/*End Tooltip*/
 
 /*Start Profile Item*/
 aside li.profile {
@@ -231,8 +182,6 @@ aside li.profile .logout-btn:hover {
 aside.opened li.profile .logout-btn:hover {
   background: var(--color-primary);
 }
-
-
 /*End Profile Item*/
 
 /*End Nav*/

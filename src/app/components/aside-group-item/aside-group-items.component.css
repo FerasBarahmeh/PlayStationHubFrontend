@@ -1,0 +1,21 @@
+:host {
+  width: 100%;
+  position: relative;
+}
+
+.group-aside-item {
+  position: relative;
+  cursor: pointer;
+  margin-top: 35px;
+}
+aside.closed :host .group-name {
+  text-align: center;
+}
+.group-name {
+  width: 100%;
+  position: absolute;
+  top: -22px;
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: capitalize;
+}

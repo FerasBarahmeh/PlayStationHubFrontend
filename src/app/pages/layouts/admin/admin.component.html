@@ -1,37 +1,37 @@
-<app-aside privilegeName="admin">
-  <aside-gruop-item groupName="controles" [isOpen]="true">
-    <aside-item [ngClass]="" routerLink="/admin/dashboard" #isDashboardRouterActive="routerLinkActive"
+<app-aside privilegeName="admin" [(isOpen)]="isAsideOpened">
+  <aside-group-item groupName="controles" [isOpen]="true">
+    <app-aside-item [ngClass]="" routerLink="/admin/dashboard" #isDashboardRouterActive="routerLinkActive"
                 [isActive]="isDashboardRouterActive.isActive" routerLinkActive itemName="dashboard" class="mb-1"
-                [ItemIcon]="iconDefinition.faWindowRestore"/>
-    <aside-item [ngClass]="" routerLink="/home" #isHomeRouterActive="routerLinkActive"
+                [itemIcon]="iconDefinition.faWindowRestore"/>
+    <app-aside-item [ngClass]="" routerLink="/home" #isHomeRouterActive="routerLinkActive"
                 [isActive]="isHomeRouterActive.isActive" routerLinkActive [itemName]="'Home'" class="mb-1"
-                [ItemIcon]="iconDefinition.faLayerGroup"/>
-  </aside-gruop-item>
+                [itemIcon]="iconDefinition.faLayerGroup"/>
+  </aside-group-item>
 
-  <aside-gruop-item groupName="users" [isOpen]="true">
-    <aside-item routerLink="/admin/users" #isUsersRouterActive="routerLinkActive"
+  <aside-group-item groupName="users" [isOpen]="true">
+    <app-aside-item routerLink="/admin/users" #isUsersRouterActive="routerLinkActive"
                 [isActive]="isUsersRouterActive.isActive" routerLinkActive [itemName]="'Users'"
-                [ItemIcon]="iconDefinition.faUsers"/>
-  </aside-gruop-item>
+                [itemIcon]="iconDefinition.faUsers"/>
+  </aside-group-item>
 
-  <aside-gruop-item groupName="app" [separetorLine]="false" [isOpen]="true">
-    <aside-item routerLink="/admin/clubs"
+  <aside-group-item groupName="app" [separatorLine]="false" [isOpen]="true">
+    <app-aside-item routerLink="/admin/clubs"
                 itemName="clubs"
                 #isClubsRouterActive="routerLinkActive"
                 [isActive]="isClubsRouterActive.isActive"
                 routerLinkActive
-                [ItemIcon]="iconDefinition.faShop"
+                [itemIcon]="iconDefinition.faShop"
     />
-<!--    <aside-item routerLink="/admin/clubs/overviews"-->
-<!--                [itemName]="'overviews'"-->
-<!--                #isOverviewsRouterActive="routerLinkActive"-->
-<!--                [isActive]="isOverviewsRouterActive.isActive"-->
-<!--                routerLinkActive-->
-<!--                [ItemIcon]="iconDefinition.faEye"-->
-<!--    />-->
-  </aside-gruop-item>
+    <app-aside-item routerLink="/admin/clubs/overviews"
+                [itemName]="'overviews'"
+                #isOverviewsRouterActive="routerLinkActive"
+                [isActive]="isOverviewsRouterActive.isActive"
+                routerLinkActive
+                [itemIcon]="iconDefinition.faEye"
+    />
+  </aside-group-item>
 </app-aside>
 
-<main class="page-content">
+<main class="{{isAsideOpened?'opened-aside':'closed-aside'}}">
   <ng-content></ng-content>
 </main>

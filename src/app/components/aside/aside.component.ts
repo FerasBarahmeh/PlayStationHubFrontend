@@ -1,16 +1,7 @@
-import {Component, ElementRef, HostListener, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {NgClass} from "@angular/common";
-import {
-  faRightFromBracket,
-  faAngleDoubleRight,
-  faSearch,
-  faWindowRestore,
-  faUsers,
-  faGears,
-  faArrowLeft, faBurger, faMinus, faBars, faBarsStaggered
-} from "@fortawesome/free-solid-svg-icons"
+import {faBars, faBarsStaggered, faRightFromBracket, faSearch} from "@fortawesome/free-solid-svg-icons"
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
-import {AsideItemComponent} from '../aside-item/aside-item.component';
 import {RouterModule} from '@angular/router';
 import {AuthService} from "../../services/auth.service";
 import {IUser} from "../../interfaces/user/IUser";
@@ -22,49 +13,37 @@ import {IUser} from "../../interfaces/user/IUser";
   imports: [
     FaIconComponent,
     NgClass,
-    AsideItemComponent,
     RouterModule
   ],
-  styleUrl: './aside.component.css'
+  styleUrl: './aside.component.css',
 })
 
 export class AsideComponent implements OnInit {
   public iconDefinition = {
-
     faRightFromBracket,
-    faAngleDoubleRight,
     faSearch,
-    faWindowRestore,
-    faUsers,
-    faGears,
-    faArrowLeft
+    faBars,
+    faBarsStaggered
   }
-  protected readonly faBars = faBars;
-  protected readonly faBarsStaggered = faBarsStaggered;
 
   public authorizedUser: IUser | null = null;
 
   constructor(private _authService: AuthService) {
   }
 
-  @Input({required:false})
+  @Input({required: false})
   public privilegeName!: string;
 
-  ngOnInit(): void {
-    if (this.authorizedUser == null) {
-      this._authService.authorizedUser().subscribe(res => {
-        this.authorizedUser = res.response.authenticatedUser;
-        this.privilegeName = res.response.privileges.map((role : any)=> role.name).at(-1);
-      });
-    }
-  }
+  @Input()
+  public isOpen = false;
 
-  public isOpen = true;
+  @Output()
+  isOpenChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  @ViewChild('asideSearchInput') asideSearchInput !: ElementRef;
+  @ViewChild('asideSearchInput')
+  asideSearchInput !: ElementRef;
 
   @HostListener('window:keydown', ['$event'])
-
   public handleKeyDown(event: KeyboardEvent) {
     if (event.ctrlKey && event.key === 'k') {
       event.preventDefault();
@@ -73,4 +52,19 @@ export class AsideComponent implements OnInit {
     }
   }
 
+
+  ngOnInit(): void {
+    if (this.authorizedUser == null) {
+      this._authService.authorizedUser().subscribe(res => {
+        this.authorizedUser = res.response.authenticatedUser;
+        this.privilegeName = res.response.privileges.map((role: any) => role.name).at(-1);
+      });
+    }
+  }
+
+
+  toggleAside(): void {
+    this.isOpen = !this.isOpen;
+    this.isOpenChange.emit(this.isOpen);
+  }
 }

@@ -22,6 +22,7 @@ $bs-dropdown-link-hover-bg: var(--color-dark);
 
 
 :root {
+
   --color-primary-light: #F5FE7F;
   --color-primary: #00B7AB;
   --color-dark: #151515;
@@ -47,6 +48,13 @@ $bs-dropdown-link-hover-bg: var(--color-dark);
   --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.15);
   --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.2);
   --shadow-primary-light:  var(--shadow-primary-light);
+
+/**
+  Start Aside
+*/
+  --opened-aside-width: 250px;
+  --closed-aside-width: 80px;
+
 }
 // Start Angular Configuration
 :host {
@@ -85,7 +93,7 @@ input[type="checkbox"] {
 /*Start components*/
 .separator-line {
   background-color: var(--input-placeholder);
-  height: 1px;
+  height: 0.5px;
   width: 100%;
 }
 .rotate-180 {
@@ -94,19 +102,6 @@ input[type="checkbox"] {
 }
 /*End components*/
 
-// App
-.page-content {
-  margin-left: 60px;
-  padding: 10px;
-
-}
- /*Large devices (desktops, 992px and up)*/
- @media (min-width: 992px) {
-  .page-content {
-    padding: 20px;
-    margin-left: 300px;
-  }
-}
 
 .section-title {
   text-align: center;
