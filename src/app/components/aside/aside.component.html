@@ -23,11 +23,12 @@
     <li class="profile">
       <div class="profile-details">
         <img src="assets/images/avatars/1.png" alt="profileImg">
-        <div class="name_job">
-          <div class="name">FerasBarahmeh</div>
+        <div class="flex flex-column">
+          <div class="name">{{ authorizedUser?.username }}</div>
+          <div class="privilege text-muted fst-italic" style="font-size: 10px">{{ privilegeName }}</div>
         </div>
       </div>
-      <div class="logout-btn">
+      <div class="logout-btn" [routerLink]="['/auth/logout']">
         <fa-icon [icon]="iconDefinition.faRightFromBracket"></fa-icon>
         <span class="tooltip">logout</span>
       </div>
