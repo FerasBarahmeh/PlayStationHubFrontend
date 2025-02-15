@@ -11,7 +11,6 @@ import {HttpClient} from "@angular/common/http";
 import {ClubsService} from "../../../services/clubs.service";
 import {IResponse} from "../../../interfaces/responses/IResponse";
 import {IOwner} from "../../../interfaces/owners/IOwner";
-import Swal from "sweetalert2";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faCircleExclamation} from "@fortawesome/free-solid-svg-icons";
 
@@ -24,6 +23,8 @@ import {faCircleExclamation} from "@fortawesome/free-solid-svg-icons";
 })
 export class InsertClubComponent implements OnInit {
   readonly status: any = Status;
+
+  protected readonly faCircleExclamation = faCircleExclamation;
 
   owners: IOwnersCoreDetails[] | null = null;
 
@@ -72,9 +73,15 @@ export class InsertClubComponent implements OnInit {
     }
   }
 
+  onCancelledInsertClub(): void {
+    this.insertableClubForm.reset({
+      deviceCount: 0,
+      status: Status.active.value,
+    });
+  }
+
   getValidationClasses(controlName: string) {
     return getValidationClasses(this.insertableClubForm.get(controlName));
   }
 
-  protected readonly faCircleExclamation = faCircleExclamation;
 }

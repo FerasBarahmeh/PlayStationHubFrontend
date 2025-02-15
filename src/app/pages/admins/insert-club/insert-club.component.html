@@ -21,6 +21,7 @@
               <input type="text" id="name"
                      class="form-control form-control-sm"
                      placeholder="Club name"
+                     autocomplete="off"
                      [ngClass]="getValidationClasses('name')"
                      formControlName="name"
               />
@@ -36,6 +37,7 @@
               <input type="text" id="location"
                      [ngClass]="getValidationClasses('location')"
                      class="form-control form-control-sm" placeholder="Club Location"
+                     autocomplete="off"
                      formControlName="location">
 
               <app-validation-message
@@ -71,6 +73,7 @@
                          [ngClass]="getValidationClasses('deviceCount')"
                          formControlName="deviceCount"
                          aria-label="Device count"
+                         autocomplete="off"
                   >
                   <app-validation-message
                     [errorMessages]="{required: 'must choose owner for club.',notNumeric: 'must be a numeric', min: 'number of devices must be positive'}"
@@ -96,8 +99,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary text-capitalize" data-bs-dismiss="modal" #closeButton>close</button>
-        <button type="button" class="btn btn-primary text-capitalize" (click)="onInsertClub()" [disabled]="insertableClubForm.invalid">insert</button>
+        <button type="button" class="btn btn-outline-secondary btn-sm text-capitalize" (click)="onCancelledInsertClub()"  data-bs-dismiss="modal" #closeButton>close</button>
+        <button type="button" class="btn btn-primary btn-sm text-capitalize" (click)="onInsertClub()" [disabled]="insertableClubForm.invalid">insert</button>
       </div>
     </div>
   </div>
