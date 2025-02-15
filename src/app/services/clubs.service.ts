@@ -1,34 +1,32 @@
 import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment.development";
 import {HttpClient} from "@angular/common/http";
-import {map, Observable} from "rxjs";
+import {Observable} from "rxjs";
 import {IClub} from "../interfaces/clubs/IClub";
 import {IResponse} from "../interfaces/responses/IResponse";
+import {IInsertClub} from "../interfaces/clubs/IInsertClub";
+import {IOwner} from "../interfaces/owners/IOwner";
+import {Status} from "../enums/Status";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClubsService {
-  private readonly API_URL = environment.API_URL + 'clubs/';
+  private readonly API_URL = environment.API_URL + 'Clubs/';
 
   constructor(private _httpClient: HttpClient) {
   }
 
-  public clubs(): Observable<IResponse<IClub>> {
-    return this._httpClient.get<IResponse<IClub>>(this.API_URL, {withCredentials: true})
-      .pipe(
-        map(res => {
-          return res;
-        })
-      );
+  clubs(): Observable<IResponse<IClub[]>> {
+    return this._httpClient.get<IResponse<IClub[]>>(this.API_URL, {withCredentials: true});
   }
 
-  public find(id: number): Observable<IResponse<IClub>> {
-    return this._httpClient.post<IResponse<IClub>>(this.API_URL + 'Find', {"ID": id}, {withCredentials: true})
-      .pipe(
-        map(res => {
-          return res;
-        })
-      );
+  find(id: number): Observable<IResponse<IClub>> {
+    return this._httpClient.post<IResponse<IClub>>(this.API_URL + 'Find', {"ID": id}, {withCredentials: true});
+  }
+
+  insert(newClub: IInsertClub) {
+    newClub.status = newClub.status ?? Status.active.value;
+    return this._httpClient.post<IResponse<IOwner>>(this.API_URL + 'Insert', newClub, {withCredentials: true});
   }
 }

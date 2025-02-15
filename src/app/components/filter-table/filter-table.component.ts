@@ -2,6 +2,7 @@ import { Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewC
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faFilter, faSearch, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import { ISearchTable } from '../../interfaces/events/ISearchTable';
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'filter-table',
@@ -10,6 +11,7 @@ import { ISearchTable } from '../../interfaces/events/ISearchTable';
   styleUrls: ['./filter-table.component.css'],
   imports: [
     FaIconComponent,
+    RouterLink,
   ]
 })
 export class FilterTableComponent {
@@ -20,7 +22,8 @@ export class FilterTableComponent {
     faEllipsisVertical
   };
 
-  @ViewChild('filterSearchInput') filterSearchInput !: ElementRef;
+  @ViewChild('filterSearchInput')
+  filterSearchInput !: ElementRef;
 
   @Output()
   searchStarted: EventEmitter<ISearchTable> = new EventEmitter<ISearchTable>();
@@ -29,6 +32,9 @@ export class FilterTableComponent {
   public filterableColumns: string[] = [];
 
   public selectedFilters: string[] = [];
+
+  @Input()
+  public options: {name: string, url: string}[] = []
 
   @HostListener('window:keydown', ['$event'])
   public onKeyDown(event: KeyboardEvent) {

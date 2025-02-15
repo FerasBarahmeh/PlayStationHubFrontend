@@ -1,5 +1,5 @@
-import {IAdmin} from "./IAdmin";
-import {IUser} from "./IUser";
+import {IAdmin} from "../user/IAdmin";
+import {IUser} from "../user/IUser";
 
 export interface IOwner {
   id: number;

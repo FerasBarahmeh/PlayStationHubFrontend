@@ -1,0 +1,13 @@
+<ul class="mx-2">
+  @if (control?.invalid && control?.touched) {
+    @for (error of getValidationMessages(); track error) {
+      <li class="mt-sm-1 mt-md-2">
+        <small class="invalid-feedback mt-0 d-block d-flex gap-sm-1 gap-md-2 align-items-center">
+          <fa-icon [icon]="faDotCircle"></fa-icon>
+          <span>{{ error }}</span>
+        </small>
+      </li>
+    }
+  }
+
+</ul>

@@ -1,9 +1,17 @@
 import {Component, Input} from '@angular/core';
 import {IUser} from "../../../interfaces/user/IUser";
-import {faAngleDown, faCheckCircle, faEllipsisVertical, faSearch, faTrash, faInfo, faHome, faPlusCircle} from "@fortawesome/free-solid-svg-icons";
+import {
+  faAngleDown,
+  faCheckCircle,
+  faEllipsisVertical,
+  faHome,
+  faInfo,
+  faPlusCircle,
+  faSearch,
+  faTrash
+} from "@fortawesome/free-solid-svg-icons";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {NgClass} from "@angular/common";
-import {status} from "../../../enums/Status";
 
 @Component({
   selector: 'app-user-row',
@@ -34,5 +42,4 @@ export class UserRowComponent {
     faPlusCircle,
 
   }
-  protected readonly status = status;
 }

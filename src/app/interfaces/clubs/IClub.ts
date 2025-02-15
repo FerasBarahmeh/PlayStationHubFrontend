@@ -1,4 +1,4 @@
-import {IOwner} from "../user/IOwner";
+import {IOwner} from "../owners/IOwner";
 
 export interface IClub{
   id: number;

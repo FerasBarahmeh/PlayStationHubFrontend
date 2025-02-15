@@ -3,12 +3,19 @@
     <breadcrumb [breadcrumbs]="[{ label: 'Admin', url: 'admin/dashboard' },{ label: 'Clubs' },]"/>
   </div>
 
-
   <div class="container px-4 pt-4 shadow-lg rounded bg-dark">
     <filter-table
       (searchStarted)="onSearchStart($event)"
       [filterableColumns]="['ID', 'Name']"
-    />
+    >
+      <li class="dropdown-item pointer text-capitalize" data-bs-toggle="modal" data-bs-target="#insertClubModal">
+        insert club
+      </li>
+    </filter-table>
+
+    <app-insert-club (clubInserted)="onClubInserted($event)"/>
+
+
     <div class="table-responsive rounded"  style="min-height: 170px">
       <table class="table">
         <thead class="border-bottom">

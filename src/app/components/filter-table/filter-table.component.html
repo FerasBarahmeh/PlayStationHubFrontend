@@ -16,7 +16,7 @@
     <div class="position-relative d-flex gap-2 align-items-center">
       <div>
         <span class="position-absolute search-icon"><fa-icon [icon]="icons.faSearch"></fa-icon></span>
-        <input #filterSearchInput class="form-control search-input py-1" placeholder="Serach in table (ctrl+/)">
+        <input #filterSearchInput class="form-control search-input py-1" placeholder="Search in table (ctrl+/)">
       </div>
 
       <div class="btn-group">
@@ -44,7 +44,10 @@
           operations
         </button>
         <ul class="dropdown-menu">
-          <li class="dropdown-item pointer">Overviews</li>
+          @for (option of options; track $index) {
+            <li class="dropdown-item pointer" [routerLink]="option.url">{{ option.name }}</li>
+          }
+          <ng-content></ng-content>
         </ul>
       </div>
     </div>

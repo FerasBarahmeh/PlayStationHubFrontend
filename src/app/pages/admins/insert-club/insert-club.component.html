@@ -1,0 +1,104 @@
+<div class="modal fade" id="insertClubModal" tabindex="-1" aria-labelledby="insertClubModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-capitalize" id="insertClubModalLabel">inset new club</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div [formGroup]="insertableClubForm">
+          <fieldset>
+            <legend>Sign up for the new Club now!</legend>
+            @if (errorMessage) {
+
+              <div class="alert alert-danger d-flex align-items-center gap-sm-1 gap-md-2" role="alert">
+                <fa-icon [icon]="faCircleExclamation"></fa-icon>
+                <span>{{ errorMessage }}</span>
+              </div>
+            }
+            <div class="mb-3">
+              <label class="small-label" for="name">Club name</label>
+              <input type="text" id="name"
+                     class="form-control form-control-sm"
+                     placeholder="Club name"
+                     [ngClass]="getValidationClasses('name')"
+                     formControlName="name"
+              />
+
+              <app-validation-message
+                [errorMessages]="{required: 'Name is required.',minlength: 'Name must be at least 3 characters long.'}"
+                [control]="insertableClubForm.get('name')"
+              />
+
+            </div>
+            <div class="mb-3">
+              <label class="small-label">Club Location</label>
+              <input type="text" id="location"
+                     [ngClass]="getValidationClasses('location')"
+                     class="form-control form-control-sm" placeholder="Club Location"
+                     formControlName="location">
+
+              <app-validation-message
+                [errorMessages]="{required: 'location is required.',minlength: 'location must be at least 3 characters long.'}"
+                [control]="insertableClubForm.get('location')"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label class="small-label">Owner For Club</label>
+              <select id="ownerID" class="form-select form-select-sm "
+                      [ngClass]="getValidationClasses('ownerId')"
+                      formControlName="ownerId"
+              >
+                <option [value]="null" disabled>choose owner</option>
+                @for (owner of owners; track $index) {
+                  <option value="{{owner.id}}">{{ owner.username }}</option>
+                }
+              </select>
+
+              <app-validation-message
+                [errorMessages]="{required: 'must choose owner for club.',notNumeric: 'must be a numeric'}"
+                [control]="insertableClubForm.get('ownerId')"
+              />
+            </div>
+
+            <div class="mb-3">
+              <div class="row g-3">
+                <div class="col">
+                  <label class="small-label">Device Count</label>
+                  <input type="number" class="form-control form-control-sm"
+                         placeholder="Device Count"
+                         [ngClass]="getValidationClasses('deviceCount')"
+                         formControlName="deviceCount"
+                         aria-label="Device count"
+                  >
+                  <app-validation-message
+                    [errorMessages]="{required: 'must choose owner for club.',notNumeric: 'must be a numeric', min: 'number of devices must be positive'}"
+                    [control]="insertableClubForm.get('deviceCount')"
+                  />
+                </div>
+                <div class="col">
+                  <label class="small-label">Club Status</label>
+                  <select id="status" class="form-select form-select-sm"
+                          [ngClass]="getValidationClasses('status')"
+                          formControlName="status">
+                    <option selected [value]="status.active.value">{{ status.active.label }}</option>
+                    <option [value]="status.inactive.value">{{ status.inactive.label }}</option>
+                  </select>
+                  <app-validation-message
+                    [errorMessages]="{required: 'club must be have status.',notNumeric: 'must be a numeric', min: 'number of devices must be positive'}"
+                    [control]="insertableClubForm.get('ownerId')"
+                  />
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary text-capitalize" data-bs-dismiss="modal" #closeButton>close</button>
+        <button type="button" class="btn btn-primary text-capitalize" (click)="onInsertClub()" [disabled]="insertableClubForm.invalid">insert</button>
+      </div>
+    </div>
+  </div>
+</div>

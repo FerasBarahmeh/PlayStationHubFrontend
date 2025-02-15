@@ -17,6 +17,7 @@ $form-control-bg: $form-control-bg;
 $form-control-color: $form-control-color;
 $form-control-border-color: $form-control-border-color;
 $form-control-placeholder-color: $form-control-placeholder-color;
+$form-feedback-font-size: 11px;
 
 $form-select-color: $primary;
 
@@ -25,6 +26,9 @@ $bs-pagination-disabled-bg: transparent ;
 
 $bs-dropdown-link-hover-bg: var(--color-dark);
 
+// Alert
+$alert-padding-y:               0.5px;
+$alert-padding-x:               16px;
 
 .page-item .page-link {
     color: $primary;
