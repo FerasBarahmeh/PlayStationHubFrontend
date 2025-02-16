@@ -7,6 +7,7 @@ import {IResponse} from "../interfaces/responses/IResponse";
 import {IInsertClub} from "../interfaces/clubs/IInsertClub";
 import {IOwner} from "../interfaces/owners/IOwner";
 import {Status} from "../enums/Status";
+import {IClubCore} from "../interfaces/clubs/IClubCore";
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,8 @@ export class ClubsService {
   }
   softDelete(clubId: number) {
     return this._httpClient.patch<IResponse<object>>(this.API_URL + 'SoftDelete', {id: clubId}, {withCredentials: true});
+  }
+  GetAuthenticatedUserClubsHighlights() {
+    return this._httpClient.get<IResponse<IClubCore[]>>(this.API_URL + 'GetAuthenticatedUserClubsHighlights', {withCredentials: true});
   }
 }

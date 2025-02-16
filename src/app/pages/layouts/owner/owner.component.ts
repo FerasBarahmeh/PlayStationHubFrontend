@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AsideComponent} from "../../../components/aside/aside.component";
 import {AsideGroupItemsComponent} from "../../../components/aside-group-item/aside-group-items.component";
 import {AsideItemComponent} from "../../../components/aside-item/aside-item.component";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {faEye, faGears, faLayerGroup, faShop, faUsers, faWindowRestore} from "@fortawesome/free-solid-svg-icons";
-import {NgClass} from "@angular/common";
+import {JsonPipe, NgClass} from "@angular/common";
+import {IClub} from "../../../interfaces/clubs/IClub";
+import {ClubsService} from "../../../services/clubs.service";
+import Swal from "sweetalert2";
+import {IClubCore} from "../../../interfaces/clubs/IClubCore";
 
 @Component({
   selector: 'app-owner-layout',
@@ -15,20 +19,40 @@ import {NgClass} from "@angular/common";
     AsideItemComponent,
     RouterLink,
     RouterLinkActive,
-    NgClass
+    NgClass,
+    JsonPipe
   ],
   templateUrl: './owner.component.html',
   styleUrl: './owner.component.css'
 })
-export class OwnerComponent {
+export class OwnerComponent implements OnInit {
+
   isAsideOpened = false;
 
-  public iconDefinition: any = {
+  iconDefinition: any = {
     faWindowRestore,
     faUsers,
     faGears,
     faShop,
     faLayerGroup,
     faEye,
+  }
+
+  clubs: IClubCore[] = [];
+
+  constructor(private _clubService: ClubsService) {
+
+  }
+
+  ngOnInit(): void {
+    this._clubService.GetAuthenticatedUserClubsHighlights()
+      .subscribe({
+        next: data => {
+          this.clubs = data.response;
+        },
+        error: err => {
+          Swal.fire('Ops', 'have error accord in server; try again later pls!', 'error');
+        }
+      });
   }
 }

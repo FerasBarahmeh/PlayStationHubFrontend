@@ -7,6 +7,18 @@
                 [isActive]="isHomeRouterActive.isActive" routerLinkActive [itemName]="'Home'" class="mb-1"
                 [itemIcon]="iconDefinition.faLayerGroup"/>
   </aside-group-item>
+
+  <aside-group-item groupName="Clubs" [isOpen]="true" [separatorLine]="false">
+    @if(clubs)
+    {
+      @for (club of clubs; track club.clubID) {
+        <app-aside-item [ngClass]="" [routerLink]="['/owner/club/', club.clubID]" #isClubRouterActive="routerLinkActive"
+                        [isActive]="isClubRouterActive.isActive" routerLinkActive itemName="{{club.name}}" class="mb-1"
+                        [itemIcon]="iconDefinition.faShop"/>
+      }
+    }
+
+  </aside-group-item>
 </app-aside>
 
 <main class="{{isAsideOpened?'opened-aside':'closed-aside'}}">
