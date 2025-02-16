@@ -1,0 +1,17 @@
+@if (errors && Object.keys(errors).length > 0) {
+  <div class="alert alert-danger">
+    <h5 class="alert-heading">Validation Errors</h5>
+    <ul>
+      @for (field of Object.keys(errors); track $index) {
+        <strong>{{ field }}:</strong>
+        <li>
+          <ul>
+            @for (error of errors[field]; track $index) {
+              <li>{{ error }}</li>
+            }
+          </ul>
+        </li>
+      }
+    </ul>
+  </div>
+}

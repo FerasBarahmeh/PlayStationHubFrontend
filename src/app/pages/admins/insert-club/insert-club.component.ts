@@ -7,17 +7,18 @@ import {NgClass} from "@angular/common";
 import {getValidationClasses} from '../../../Utilities/validation.utils';
 import {ValidationMessageComponent} from "../../../components/validation-message/validation-message.component";
 import {numericValidator} from "../../../Utilities/numeric-validator.utils";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpStatusCode} from "@angular/common/http";
 import {ClubsService} from "../../../services/clubs.service";
 import {IResponse} from "../../../interfaces/responses/IResponse";
 import {IOwner} from "../../../interfaces/owners/IOwner";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 import {faCircleExclamation} from "@fortawesome/free-solid-svg-icons";
+import {BackendErrorsComponent} from "../../../components/backend-errors/backend-errors.component";
 
 @Component({
   selector: 'app-insert-club',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass, ValidationMessageComponent, FaIconComponent],
+  imports: [ReactiveFormsModule, NgClass, ValidationMessageComponent, FaIconComponent, BackendErrorsComponent],
   templateUrl: './insert-club.component.html',
   styleUrl: './insert-club.component.css'
 })
@@ -37,6 +38,7 @@ export class InsertClubComponent implements OnInit {
   closeButton!: ElementRef;
 
   errorMessage: string = "";
+  backendErrors: any;
 
   constructor(private _ownerService: OwnerService, private fb: FormBuilder, private _http: HttpClient, private _clubServices: ClubsService) {
     this.insertableClubForm = this.fb.group({
@@ -67,7 +69,12 @@ export class InsertClubComponent implements OnInit {
             this.closeButton.nativeElement.click();
           },
           error: (error) => {
-            this.errorMessage = "fail insert club, try again later";
+            if (error.status == HttpStatusCode.BadRequest) {
+              this.backendErrors = error.error.errors;
+            }
+            if (error.status != HttpStatusCode.BadRequest) {
+              this.errorMessage = "fail insert club, try again later";
+            }
           },
         });
     }
