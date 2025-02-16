@@ -4,36 +4,32 @@
       <breadcrumb [breadcrumbs]="[{label: 'Admin', url:'/dashboard'}, {label:'Clubs', url:'/admin/clubs'}, {label:club.name}]"></breadcrumb>
     </div>
 
-    <div class="row">
+    <div class="row mt-md-2 mt-sm-1">
       <div class="col-lg-4">
         <div class="card shadow mb-4">
           <div class="card-body text-center">
-            <img src="/assets/images/clubs/1.jpeg" alt="avatar"
-                 class="rounded-circle img-fluid" style="width: 150px;">
+            <img src="/assets/images/clubs/1.jpeg" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
             <h5 class="my-3">{{ club.name }}</h5>
             <p class="text-muted mb-4">We are not the only ones but we are the best</p>
-            <div class="d-flex justify-content-center mb-2">
-              <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-sm" [routerLink]="['/clubs/overviews', club.id]">Overview</button>
-              <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary btn-sm ms-1">Message</button>
-            </div>
           </div>
         </div>
-        <div class="card shadow mb-4 mb-lg-0">
+        <div class="card shadow-sm mb-4 mb-lg-0">
           <div class="card-body p-0">
-            <ul class="list-group list-group-flush rounded-3">
-              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <i class="fas fa-globe fa-lg text-warning"></i>
+            <ul class="rounded-3 d-flex shadow-lg">
+              <li class="p-3 d-flex gap-1 align-items-center">
+                <fa-icon [icon]="faInstagram"/>
                 <p class="mb-0">Instagram</p>
               </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+              <li class="p-3 d-flex gap-1 align-items-center">
                 <i class="fab fa-github fa-lg text-body"></i>
+                <fa-icon [icon]="faFacebook"/>
                 <p class="mb-0">Facebook</p>
               </li>
-
             </ul>
           </div>
         </div>
       </div>
+
       <div class="col-lg-8">
         <div class="card mb-4">
           <div class="card-body">
@@ -45,7 +41,7 @@
                 <p class="text-muted mb-0">{{ club.name }}</p>
               </div>
             </div>
-            <hr>
+            <div class="separator-line my-1"></div>
             <div class="row">
               <div class="col-sm-3">
                 <p class="mb-0">Email</p>
@@ -54,7 +50,7 @@
                 <p class="text-muted mb-0">exampleexample.com</p>
               </div>
             </div>
-            <hr>
+            <div class="separator-line my-1"></div>
             <div class="row">
               <div class="col-sm-3">
                 <p class="mb-0">Phone</p>
@@ -63,7 +59,7 @@
                 <p class="text-muted mb-0">(097) 234-5678</p>
               </div>
             </div>
-            <hr>
+            <div class="separator-line my-1"></div>
             <div class="row">
               <div class="col-sm-3">
                 <p class="mb-0">Address</p>
@@ -72,43 +68,29 @@
                 <p class="text-muted mb-0">{{ club.location }}</p>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="row">
-
-          <div class="col-md-6">
-            <div class="card mb-4 mb-md-0">
-              <div class="card-body">
-                <p class="mb-4"><span class="text-primary font-italic me-1">Service</span> we provide
-                </p>
-                <p class="mb-1" style="font-size: .77rem;">Exclusive Gaming Sessions</p>
-
-                <p class="mt-4 mb-1" style="font-size: .77rem;">Game Nights</p>
-
-                <p class="mt-4 mb-1" style="font-size: .77rem;">Community Tournaments and Competitions</p>
-
-                <p class="mt-4 mb-1" style="font-size: .77rem;">Custom Merchandise for active players</p>
-
+            <div class="separator-line my-1"></div>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Owner</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{ club.owner.user.username }}</p>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Comments   -->
-    <div class="row gap-1">
-      <div class="col-lg-6">
-        <div class="card shadow mb-4">
-          <p class="mb-4 p-1"><span class="text-primary font-italic me-1">Opinion</span>Customers
-          </p>
-          <div class="card-body text-center rounded">
-            <ul>
-              @for (comment of feedbacks.response; track $index) {
-                <li class="text-lg-start mb-1" style="font-size: .77rem;">{{comment}}</li>
-              }
-            </ul>
-
+            <div class="separator-line my-1"></div>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Is Active</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                  <span [ngClass]="{'text-success': club.status == Status.active.value, 'text-danger': club.status == Status.inactive.value}">
+                    {{ club.statusName }}
+                  </span>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
