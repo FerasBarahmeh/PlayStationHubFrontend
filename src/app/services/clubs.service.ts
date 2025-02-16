@@ -29,4 +29,7 @@ export class ClubsService {
     newClub.status = newClub.status ?? Status.active.value;
     return this._httpClient.post<IResponse<IOwner>>(this.API_URL + 'Insert', newClub, {withCredentials: true});
   }
+  softDelete(clubId: number) {
+    return this._httpClient.patch<IResponse<object>>(this.API_URL + 'SoftDelete', {id: clubId}, {withCredentials: true});
+  }
 }

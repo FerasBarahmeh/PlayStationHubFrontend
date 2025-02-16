@@ -32,6 +32,10 @@ export class ClubsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._updateClubs();
+  }
+
+  private _updateClubs() {
     this._clubsService.clubs().subscribe((res: IResponse<IClub[]>) => {
       this.clubs = res.response;
     });
@@ -52,5 +56,9 @@ export class ClubsComponent implements OnInit {
       timer: 5000,
       title: response.message
     });
+  }
+
+  onClubDeactivated(){
+    this._updateClubs();
   }
 }

@@ -3,7 +3,7 @@
     <breadcrumb [breadcrumbs]="[{ label: 'Admin', url: 'admin/dashboard' },{ label: 'Clubs' },]"/>
   </div>
 
-  <div class="container px-4 pt-4 shadow-lg rounded bg-dark">
+  <div class="container rounded px-4 pt-4 shadow-lg bg-dark">
     <filter-table
       (searchStarted)="onSearchStart($event)"
       [filterableColumns]="['ID', 'Name']"
@@ -15,23 +15,36 @@
 
     <app-insert-club (clubInserted)="onClubInserted($event)"/>
 
+    @if (clubs.length <= 0) {
+      <figure class="figure d-flex justify-content-center flex-column align-items-center">
+        <img style="height: 200px" src="/assets/images/no-items.png" class="rounded img-fluid"
+             alt="no content">
+        <figcaption class="figure-caption">Not have active club</figcaption>
+      </figure>
+    }
 
-    <div class="table-responsive rounded"  style="min-height: 170px">
-      <table class="table">
-        <thead class="border-bottom">
-        <tr class="bg-dark text-center">
-          <th scope="col" class="text-light">#</th>
-          <th scope="col" class="text-light" >Name</th>
-          <th scope="col" class="text-light">Location</th>
-          <th scope="col" class="text-light text-end text-capitalize text-primary">options</th>
-        </tr>
-        </thead>
-        <tbody class="bg-dark text-light shadow-lg">
-          @for (club of clubs; track $index) {
-            <app-club-row [isOdd]="$odd" [club]="club"/>
-          }
-        </tbody>
-      </table>
-    </div>
+    @if (clubs.length > 0) {
+      <div class="rounded table-responsive" style="min-height: 170px">
+        <table class="table">
+          <thead class="border-bottom">
+          <tr class="text-center bg-dark">
+            <th scope="col" class="text-light">#</th>
+            <th scope="col" class="text-light">Name</th>
+            <th scope="col" class="text-light">Location</th>
+            <th scope="col" class="text-end text-light text-capitalize text-primary">options</th>
+          </tr>
+          </thead>
+          <tbody class="shadow-lg bg-dark text-light">
+            @if (clubs.length > 0) {
+              @for (club of clubs; track $index) {
+                <app-club-row (clubDeleted)="onClubDeactivated()" [isOdd]="$odd" [club]="club"/>
+              }
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+
+
   </div>
 </app-admin-layout>
