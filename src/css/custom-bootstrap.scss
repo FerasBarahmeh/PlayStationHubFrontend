@@ -31,6 +31,13 @@ $bs-dropdown-link-hover-bg: var(--color-dark);
 $alert-padding-y:               0.5px;
 $alert-padding-x:               16px;
 
+
+// According
+$accordion-padding-y:                     14px;
+$accordion-padding-x:                     1rem;
+$accordion-button-active-bg:              var(--primary-color);
+$accordion-button-active-color:           var(--primary-text-emphasis);
+
 .page-item .page-link {
     color: $primary;
     &:hover {

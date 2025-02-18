@@ -20,7 +20,7 @@ export class LoadingService {
       size: 'default',
       color: '#fff',
       fullScreen: false,
-    }).then(r => console.log("r", r));
+    }).then(r => {});
   }
 
   hide() {

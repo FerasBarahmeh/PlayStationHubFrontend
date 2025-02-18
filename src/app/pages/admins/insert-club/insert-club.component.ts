@@ -4,9 +4,9 @@ import {IOwnersCoreDetails} from "../../../interfaces/owners/IOwnersCoreDetails"
 import {OwnerService} from "../../../services/owner.service";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgClass} from "@angular/common";
-import {getValidationClasses} from '../../../Utilities/validation.utils';
+import {getValidationClasses} from '../../../Utilities/validators/validation.utils';
 import {ValidationMessageComponent} from "../../../components/validation-message/validation-message.component";
-import {numericValidator} from "../../../Utilities/numeric-validator.utils";
+import {numericValidator} from "../../../Utilities/validators/numeric-validator.utils";
 import {HttpClient, HttpStatusCode} from "@angular/common/http";
 import {ClubsService} from "../../../services/clubs.service";
 import {IResponse} from "../../../interfaces/responses/IResponse";

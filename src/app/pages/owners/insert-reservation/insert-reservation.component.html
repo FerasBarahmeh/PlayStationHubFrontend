@@ -1,0 +1,89 @@
+<div class="modal fade text-white" id="insertReservationModal" tabindex="-1"
+     [attr.aria-labelledby]="'insertReservationLabel-{{device.id}}'" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="insertReservationLabel-{{device.id}}">Add a reservation</h1>
+        <button type="button" class="btn-close text-light" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div [formGroup]="insertReservationForm">
+          <fieldset>
+            <legend class="fs-6 text-start">Reserve <strong>{{ device.name }}</strong></legend>
+            <div class="mb-3">
+              <label class="small-label text-capitalize" for="startAt">start at</label>
+              <input type="datetime-local" id="startAt"
+                     class="form-control form-control-sm"
+                     [ngClass]="getValidationClasses('startAt')"
+                     placeholder="The reservation start at"
+                     autocomplete="off"
+                     formControlName="startAt"
+              />
+              <app-validation-message
+                [errorMessages]="{required: 'location is required.'}"
+                [control]="insertReservationForm.get('startAt')"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label class="small-label">Reservation type</label>
+              <select id="unlimitedReservation"
+                      class="form-select form-select-sm"
+                      (change)="toggleUnlimitedReservation($event)"
+                      [ngClass]="getValidationClasses('unlimitedReservation')"
+                      formControlName="unlimitedReservation"
+              >
+                <option value="true" class="text-capitalize">unlimited</option>
+                <option value="false" class="text-capitalize">limited</option>
+              </select>
+              <app-validation-message
+                [errorMessages]="{required: 'location is required.',minlength: 'location must be at least 3 characters long.'}"
+                [control]="insertReservationForm.get('unlimitedReservation')"
+              />
+            </div>
+
+            @if (!unlimitedReservation) {
+              <div class="mb-3">
+                <label class="small-label text-capitalize" for="startAt">duration reservation</label>
+                <input type="text" id="duration"
+                       class="form-control form-control-sm"
+                       placeholder="hh:mm"
+                       autocomplete="off"
+                       [ngClass]="getValidationClasses('duration')"
+                       formControlName="duration"
+                />
+                <app-validation-message
+                  [errorMessages]="{required: 'location is required.',inValid: 'invalid time hh:mm or h:m 24 hour (1 Day).'}"
+                  [control]="insertReservationForm.get('duration')"
+                />
+              </div>
+            }
+
+            <div class="mb-3">
+              <label class="small-label text-capitalize" for="numberOfGets">number of gets</label>
+              <input type="number" id="numberOfGets"
+                     class="form-control form-control-sm"
+                     placeholder="Number Of Gets"
+                     autocomplete="off"
+                     [ngClass]="getValidationClasses('numberOfGets')"
+                     formControlName="numberOfGets"
+              />
+              <app-validation-message
+                [errorMessages]="{required: 'location is required.',minlength: 'location must be at least 3 characters long.'}"
+                [control]="insertReservationForm.get('numberOfGets')"
+              />
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary btn-sm text-capitalize" data-bs-dismiss="modal">close
+        </button>
+        <button type="button" class="btn btn-primary btn-sm text-capitalize" (click)="onInsertReservation()"
+                [disabled]="insertReservationForm.invalid">insert
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

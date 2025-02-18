@@ -1,3 +1,14 @@
 <app-owner-layout>
+  <div class="container mt-3">
+    <breadcrumb [breadcrumbs]="[
+    { label: 'Owner', url: 'owner/dashboard' },
+     { label:  club.name?? '' },]"/>
+  </div>
 
+  <div class="container mt-3 ">
+    <div class="">
+      <app-dashboard-card [routerLink]="['/owner/devices', club.id]" class="pointer" [icon]="faGamepad" value="25"
+                          label="Device Count"/>
+    </div>
+  </div>
 </app-owner-layout>

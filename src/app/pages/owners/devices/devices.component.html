@@ -1,0 +1,52 @@
+<app-owner-layout>
+  <div class="container mt-3">
+    <breadcrumb [breadcrumbs]="[{ label: 'Owner', url: 'owner/dashboard' }, { label: club.name, url: 'owner/club/' + club.id }, {label: 'Devices'}]"/>
+  </div>
+
+  <div class="container show rounded px-4 pt-4 shadow-lg bg-dark">
+    <filter-table
+      (searchStarted)="onSearchStart($event)"
+      [filterableColumns]="['ID', 'Name']"
+    >
+      <li class="dropdown-item pointer text-capitalize" data-bs-toggle="modal" data-bs-target="#insertClubModal">
+        insert device
+      </li>
+    </filter-table>
+
+    @if (devices.length <= 0) {
+      <figure class="figure d-flex justify-content-center flex-column align-items-center">
+        <img style="height: 200px" src="/assets/images/no-items.png" class="rounded img-fluid"
+             alt="no content">
+        <figcaption class="figure-caption">Not have active club</figcaption>
+      </figure>
+    }
+
+    @if (devices.length > 0) {
+      <div class="rounded table-responsive" style="min-height: 170px">
+        <table class="table">
+          <thead class="border-bottom">
+          <tr class="text-center bg-dark">
+            <th scope="col" class="text-light">#</th>
+            <th scope="col" class="text-light">Name</th>
+            <th scope="col" class="text-light">description</th>
+            <th scope="col" class="text-light">Hour Price</th>
+            <th scope="col" class="text-end text-light text-capitalize text-primary">options</th>
+          </tr>
+          </thead>
+          <tbody class="shadow-lg bg-dark text-light">
+            @if (devices.length > 0) {
+              @for (device of devices; track $index) {
+                <app-device-row [isOdd]="$odd" [device]="device"/>
+
+              }
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+
+
+  </div>
+
+  <app-insert-reservation />
+</app-owner-layout>

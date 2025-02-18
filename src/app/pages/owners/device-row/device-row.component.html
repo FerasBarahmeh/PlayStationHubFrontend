@@ -1,0 +1,38 @@
+<tr class="text-light text-center" [ngClass]="{'bg-dark': !isOdd}" >
+  <td>{{ device.id }}</td>
+  <td class="pointer">
+    {{ device.name }}
+  </td>
+  <td>
+    {{ device.description }}
+  </td>
+  <td>
+    JOD <span>{{ device.hourPrice }}</span>
+  </td>
+  <td class="text-end">
+    <div class="dropdown">
+      <fa-icon
+        [icon]="faEllipsisV"
+        class="text-info mx-1 pointer"
+        id="insertReservationModalBtn"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      />
+
+      <ul class="dropdown-menu">
+        <li class="dropdown-item d-flex align-items-center pointer gap-3" [routerLink]="['/owner/reservations', device.id]">
+          <fa-icon [icon]="faBookmark" class="text-info mx-1 pointer"/>
+          <span>Reservations</span>
+        </li>
+        <li class="dropdown-item d-flex align-items-center pointer gap-3"
+            (click)="openModal(device)"
+            data-bs-toggle="modal" [attr.data-bs-target]="'#insertReservationModal'">
+          <fa-icon [icon]="faPlus" class="text-info mx-1 pointer"/>
+          <span>Add Reservation</span>
+        </li>
+
+      </ul>
+    </div>
+  </td>
+
+</tr>

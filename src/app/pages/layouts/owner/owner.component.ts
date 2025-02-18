@@ -3,7 +3,7 @@ import {AsideComponent} from "../../../components/aside/aside.component";
 import {AsideGroupItemsComponent} from "../../../components/aside-group-item/aside-group-items.component";
 import {AsideItemComponent} from "../../../components/aside-item/aside-item.component";
 import {RouterLink, RouterLinkActive} from "@angular/router";
-import {faEye, faGears, faLayerGroup, faShop, faUsers, faWindowRestore} from "@fortawesome/free-solid-svg-icons";
+import {faEye, faGears, faLayerGroup, faShop, faUsers, faWindowRestore, faGamepad, faLinesLeaning} from "@fortawesome/free-solid-svg-icons";
 import {JsonPipe, NgClass} from "@angular/common";
 import {IClub} from "../../../interfaces/clubs/IClub";
 import {ClubsService} from "../../../services/clubs.service";
@@ -36,6 +36,8 @@ export class OwnerComponent implements OnInit {
     faShop,
     faLayerGroup,
     faEye,
+    faGamepad,
+    faLinesLeaning,
   }
 
   clubs: IClubCore[] = [];

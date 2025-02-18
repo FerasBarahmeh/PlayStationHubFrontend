@@ -1,0 +1,30 @@
+<app-owner-layout>
+  <div class="container mt-3">
+    <breadcrumb
+      [breadcrumbs]="[{ label: 'Owner', url: 'owner/dashboard' },{ label: 'Club', url: 'owner/club/'+device.clubID }, {label: device.name,url: '#'}, {label: 'Reservations'}]"/>
+  </div>
+
+  <div class="container rounded px-4 pt-4 shadow-lg bg-dark">
+    <div class="rounded table-responsive" style="min-height: 170px">
+      <table class="table">
+        <thead class="border-bottom">
+        <tr class="text-center bg-dark">
+          <th scope="col" class="text-light">#</th>
+          <th scope="col" class="text-light">Start At</th>
+          <th scope="col" class="text-light">End At</th>
+          <th scope="col" class="text-light">Total Price</th>
+          <th scope="col" class="text-light">Device ID</th>
+          <th scope="col" class="text-light">NumberOfGuests</th>
+          <th scope="col" class="text-light">Duration</th>
+          <th scope="col" class="text-light">StatusReservation</th>
+          <th scope="col" class="text-light">UnlimitedReservation</th>
+          <th scope="col" class="text-end text-light text-capitalize text-primary">options</th>
+        </tr>
+        </thead>
+        <tbody class="shadow-lg bg-dark text-light">
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</app-owner-layout>
